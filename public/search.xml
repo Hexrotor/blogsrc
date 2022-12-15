@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>博客搭建</title>
-    <url>/2022/12/14/first_blog/</url>
+    <url>/2022/12/15/first_blog/</url>
     <content><![CDATA[<p>以前搭建过博客和Onedrive资源站。资源站是一键式搭建的，但博客是用一个静态网页完全自己手动编辑的，当时不懂博客框架这种东西。这次搭博客我选择用Github+Hexo搭建。域名暂时懒得买了，就用Github Page凑合下。</p>
 <p>都是照着教程来的，过程没什么写的，这里简单写一下遇到的坑。</p>
 <h2 id="WSL与Windows共用PATH"><a href="#WSL与Windows共用PATH" class="headerlink" title="WSL与Windows共用PATH"></a>WSL与Windows共用PATH</h2><p>安装Nodejs时发现的，因为我Windows和WSL里都装了Nodejs，而WSL的$PATH中居然包含Windows的PATH，导致我在WSL中无法正常运行npm。不是很理解这种机制到底有什么意义。</p>
