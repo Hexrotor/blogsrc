@@ -19,13 +19,9 @@ appendWindowsPath=false
 
 然后管理员运行PowerShell，执行如下命令以重启WSL
 
+```shell
+$ net stop LxssManager; net start LxssManager
 ```
-net stop LxssManager; net start LxssManager
-```
-
-## 字体
-
-总觉得代码块的字体很丑，主题也没有提供修改接口，等有时间研究下给它换掉。
 
 ## Live2D
 
@@ -39,6 +35,12 @@ net stop LxssManager; net start LxssManager
 
 我当年弄网页Live2D就是想要放上血小板那个模型，但当年怎么都找不到，而且技术也不过关。现在看来，这个Live2D接口要自己搭后端，否则就只能用别人的老接口，用现有的模型。最近期末了比较忙没时间整了，先挖个坑以后来填。
 
+## 字体
+
+代码块的默认字体太丑了，换成Consolas了，也是靠修改主题文件中的highlight.styl配置，把font-family参数全部修改。
+
+Mozilla还有个页面可以在线调试字体配置：[https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family)
+
 ## 网站源码
 
 和我想的不一样，网页的部署是Hexo自动完成的，生成的网页和源码完全是两回事，所以还需要新开一个仓库来保存源码。但是感觉好麻烦，每次都要执行好几次命令，而且我node_module放在项目文件夹里的，git扫描要挺久的。后续想尝试下用Action，push源码后自动运行Hexo生成网页。
@@ -49,6 +51,6 @@ net stop LxssManager; net start LxssManager
 
 简单说一下结构。我上传的源码中包含NodeModule和Hexo文件，所以在Action中直接用命令行调用即可。Hexo依赖Git来推送布署网站，所以要生成一对密钥给Git用。当我push源码到仓库时，workflow被触发，在云端Action上clone我的网站源码并执行Hexo，这样就能更新我的网站了。
 
-还有个坑没搞明白，Action上运行Hexo布署网站后，仓库的git log只剩两条了，而我在本地布署并不会这样，猜测和clone --depth=1有关。
+还有个坑没搞明白，Action上运行Hexo布署网站后，仓库的git log只剩两条了，而我在本地布署并不会这样，猜测和clone \-\-depth=1有关。
 
 后续待更新
