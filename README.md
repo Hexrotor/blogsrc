@@ -2,4 +2,4 @@
 
 Based on hexo.
 
-[Blog Link](hexrotor.github.io)
+[Blog Link](https://hexrotor.github.io)
