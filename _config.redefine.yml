@@ -22,7 +22,7 @@ style:
   avatar: /images/avatar.jpg # avatar of the author
 
   # Favicon (You can use local image or image external link)
-  favicon: https://img.icons8.com/ios-glyphs/30/null/internet-explorer.png # favicon of the site
+  favicon: https://img.icons8.com/ios-filled/50/null/benzene-ring.png # favicon of the site
 
   # Article image align position
   article_img_align: center # value: left | center
