@@ -31,8 +31,8 @@ jobs:
       
       - name: hexo build
         run: |
-          # git clone --depth=1 --branch=master https://github.com/Hexrotor/blogsrc
-          git clone --branch=master https://github.com/Hexrotor/blogsrc
+          git clone --depth=1  https://github.com/Hexrotor/blogsrc
+          # git clone --branch=master https://github.com/Hexrotor/blogsrc
           cd blogsrc
           chmod 755 ./node_modules/.bin/hexo
           ./node_modules/.bin/hexo clean
