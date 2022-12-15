@@ -232,3 +232,12 @@ footer:
 # Redefine Theme version (Please don't modify)
 # ---------------------------------------------------------------------------------------
 version: 0.3.5
+
+# Inject the css and script (aplayer/meting)
+#aplayerInject:
+#  enable: true
+#  per_page: true
+#  inject:
+#  head:
+#  bottom:
+#    - <div class="aplayer" data-id="7868042847" data-server="tencent" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div>
