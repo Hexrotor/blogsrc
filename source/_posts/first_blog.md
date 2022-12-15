@@ -53,4 +53,12 @@ Mozilla还有个页面可以在线调试字体配置：[https://developer.mozill
 
 还有个坑没搞明白，Action上运行Hexo布署网站后，仓库的git log只剩两条了，而我在本地布署并不会这样，~~猜测和clone \-\-depth=1有关~~(没有关系)。
 
+## Aplayer
+
+网页左下角的音乐播放器是Aplayer实现的，参考了这篇文章[https://blog.csdn.net/weixin_58068682/article/details/116612364](https://blog.csdn.net/weixin_58068682/article/details/116612364)
+
+这篇文章中使用的Hexo主题是Butterfly，和我的并不一样。不过我的主题也支持pjax，应该是能实现全局音乐播放的，最后折腾了一番才把我的整好。
+
+遇到一个坑：Aplayer的\<div\>代码一开始是放footer的，但一切换页面左下角播放器就消失了，音乐倒是还在放。然后思考了一下决定把代码放body里，于是修改layout.ejs，成功。
+
 后续待更新
