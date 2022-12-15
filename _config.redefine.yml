@@ -83,8 +83,8 @@ menu: #you can customize
   Home: /
   Archives: /archives
   # Status: https://status.evanluo.top/
-  # Links: /links
-  # About: /about
+  Links: /links
+  About: /about
   # Changelog: /changelog
   # ......
 
