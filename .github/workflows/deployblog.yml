@@ -34,5 +34,6 @@ jobs:
           git clone --depth=1 --branch=master https://github.com/Hexrotor/blogsrc
           cd blogsrc
           echo $PATH
+          chmod 755 ./node_modules/.bin/hexo
           ./node_modules/.bin/hexo clean
           ./node_modules/.bin/hexo g -d
