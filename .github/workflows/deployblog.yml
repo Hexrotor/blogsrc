@@ -1,0 +1,38 @@
+name: Hexo Deploy
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+
+      - name: Setup env
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$DEPLOY_KEY"> ~/.ssh/id_rsa
+          chmod 700 ~/.ssh
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.email "tszbbb@qq.com"
+          git config --global user.name "Hexrotor"
+      
+      - name: hexo build
+        run: |
+          git clone --depth=1 --branch=master https://github.com/Hexrotor/blogsrc
+          cd blogsrc
+          echo $PATH
+          hexo clean
+          hexo g -d
