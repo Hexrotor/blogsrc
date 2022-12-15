@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>博客搭建</title>
+    <url>/2022/12/14/first_blog/</url>
+    <content><![CDATA[<p>以前搭建过博客和Onedrive资源站。资源站是一键式搭建的，但博客是用一个静态网页完全自己手动编辑的，当时不懂博客框架这种东西。这次搭博客我选择用Github+Hexo搭建。域名暂时懒得买了，就用Github Page凑合下。</p>
+<p>都是照着教程来的，过程没什么写的，这里简单写一下遇到的坑。</p>
+<h2 id="WSL与Windows共用PATH"><a href="#WSL与Windows共用PATH" class="headerlink" title="WSL与Windows共用PATH"></a>WSL与Windows共用PATH</h2><p>安装Nodejs时发现的，因为我Windows和WSL里都装了Nodejs，而WSL的$PATH中居然包含Windows的PATH，导致我在WSL中无法正常运行npm。不是很理解这种机制到底有什么意义。</p>
+<p>解决方案：编辑&#x2F;etc&#x2F;wsl.conf，添加如下字段</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">[interop]</span><br><span class="line">appendWindowsPath=false</span><br></pre></td></tr></table></figure></div>
+
+<p>然后管理员运行PowerShell，执行如下命令以重启WSL</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">net stop LxssManager; net start LxssManager</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><p>总觉得代码块的字体很丑，主题也没有提供修改接口，等有时间研究下给它换掉。</p>
+<h2 id="Live2D"><a href="#Live2D" class="headerlink" title="Live2D"></a>Live2D</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post_imgs/xtxnbj.jpg"
+                     
+                ></p>
+<p>在电脑端访问我的博客，会加载一个Live2D小人。这玩意儿我很早以前在第一个博客里放过，但是当时完全是静态Html，直接引用一条js即可。但现在我使用Hexo，页面是根据主题自动生成的，要如何插入js？</p>
+<p>主题生成页面时肯定有某些规则文件。研究了一番，发现是在主题根目录的layout文件夹中(仅对于我的主题”redefine”而言)，里面有很多ejs文件，记录了生成页面的规则。找到script.ejs文件添加了js即可。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post_imgs/live2djs.jpg"
+                     
+                ></p>
+<p>我当年弄网页Live2D就是想要放上血小板那个模型，但当年怎么都找不到，而且技术也不过关。现在看来，这个Live2D接口要自己搭后端，否则就只能用别人的老接口，只能用现有的模型。最近期末了比较忙没时间整了，先挖个坑以后来填。</p>
+<p>后续待更新</p>
+]]></content>
+  </entry>
+</search>
