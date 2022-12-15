@@ -43,4 +43,10 @@ net stop LxssManager; net start LxssManager
 
 和我想的不一样，网页的部署是Hexo自动完成的，生成的网页和源码完全是两回事，所以还需要新开一个仓库来保存源码。但是感觉好麻烦，每次都要执行好几次命令，而且我node_module放在项目文件夹里的，git扫描要挺久的。后续想尝试下用Action，push源码后自动运行Hexo生成网页。
 
+## Github Action 自动布署 Hexo
+
+参考了这篇文章：[https://zhuanlan.zhihu.com/p/170563000](https://zhuanlan.zhihu.com/p/170563000)
+
+简单说一下结构。我上传的源码中包含NodeModule和Hexo文件，所以在Action中直接用命令行调用即可。Hexo依赖Git来推送布署网站，所以要生成一对密钥给Git用。当我push源码到仓库时，workflow被触发，在云端Action上clone我的网站源码并执行Hexo，这样就能更新我的网站了。
+
 后续待更新

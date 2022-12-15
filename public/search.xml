@@ -29,6 +29,8 @@
                 ></p>
 <p>我当年弄网页Live2D就是想要放上血小板那个模型，但当年怎么都找不到，而且技术也不过关。现在看来，这个Live2D接口要自己搭后端，否则就只能用别人的老接口，用现有的模型。最近期末了比较忙没时间整了，先挖个坑以后来填。</p>
 <h2 id="网站源码"><a href="#网站源码" class="headerlink" title="网站源码"></a>网站源码</h2><p>和我想的不一样，网页的部署是Hexo自动完成的，生成的网页和源码完全是两回事，所以还需要新开一个仓库来保存源码。但是感觉好麻烦，每次都要执行好几次命令，而且我node_module放在项目文件夹里的，git扫描要挺久的。后续想尝试下用Action，push源码后自动运行Hexo生成网页。</p>
+<h2 id="Github-Action-自动布署-Hexo"><a href="#Github-Action-自动布署-Hexo" class="headerlink" title="Github Action 自动布署 Hexo"></a>Github Action 自动布署 Hexo</h2><p>参考了这篇文章：<a class="link"   href="https://zhuanlan.zhihu.com/p/170563000" >https://zhuanlan.zhihu.com/p/170563000<i class="fas fa-external-link-alt"></i></a></p>
+<p>简单说一下结构。我上传的源码中包含NodeModule和Hexo文件，所以在Action中直接用命令行调用即可。Hexo依赖Git来推送布署网站，所以要生成一对密钥给Git用。当我push源码到仓库时，workflow被触发，在云端Action上clone我的网站源码并执行Hexo，这样就能更新我的网站了。</p>
 <p>后续待更新</p>
 ]]></content>
   </entry>
