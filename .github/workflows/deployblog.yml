@@ -38,5 +38,5 @@ jobs:
           chmod 755 ./node_modules/.bin/hexo
           ./node_modules/.bin/hexo clean
           ./node_modules/.bin/hexo g
-          find ./public/images/post_imgs/ -not -name "*_raw.jpg" -not -name "*_raw.jpeg" -name "*.jpg" -o -name "*.jpeg" | xargs jpegoptim -m 80
+          find ./public/images/post_imgs/ -not -iname "*_raw.jpg" -not -iname "*_raw.jpeg" -iname "*.jpg" -o -iname "*.jpeg" | xargs jpegoptim -m 80
           ./node_modules/.bin/hexo d

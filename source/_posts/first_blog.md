@@ -69,7 +69,7 @@ Mozilla还有个页面可以在线调试字体配置：[https://developer.mozill
 因为博客采用Github Page，所以访问速度有够慢的，live2D经常加载不出来(倒是和Page无关)。考虑到后期上的图可能比较多，不可能每次都手动压缩，我设置了jpg压缩程序，使用的是Jpegoptim，配合find就能实现批量操作。另外，每次加图片都要跑到主题module文件夹里去，因为生成网页源码就从那个地方加载，不知道怎么调，干脆就写了个shell命令从外面文件夹复制图片进去，这样加图片会比较方便。
 
 ```Shell
-find ./public/images/post_imgs/ -not -name "*_raw.jpg" -not -name "*_raw.jpeg" -name "*.jpg" -o -name "*.jpeg" | xargs jpegoptim -m 80
+find ./public/images/post_imgs/ -not -iname "*_raw.jpg" -not -iname "*_raw.jpeg" -iname "*.jpg" -o -iname "*.jpeg" | xargs jpegoptim -m 80
 ```
 
 上述代码为设置jpg质量为80，jpegoptim会默认跳过一些不需要优化压缩的图片。另外这个优化并不是对原图片进行修改，而是对hexo g之后生成的public文件夹中图片进行修改，原图能得到比较妥善的保管。文件名最后带有_raw的jpg/jpeg图片不会被压缩。
