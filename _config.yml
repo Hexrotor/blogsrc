@@ -105,9 +105,8 @@ deploy:
   type: 'git'
   repo:
     github: 
-      url: 'https://github.com/Hexrotor/hexrotor.github.io'
+      url: 'https://Hexrotor:${{ DEPLOY_TOKEN }}@github.com/Hexrotor/hexrotor.github.io'
       branch: 'main'
-      token: $DEPOLY_TOKEN
 
 # aplayer
 aplayer:
