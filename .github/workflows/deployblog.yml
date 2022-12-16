@@ -34,10 +34,12 @@ jobs:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
           sudo apt update && sudo apt install jpegoptim -y
-          git clone --depth=1  https://github.com/Hexrotor/blogsrc
+          git clone --depth=1 https://github.com/Hexrotor/blogsrc
           cd blogsrc
           chmod 755 ./node_modules/.bin/hexo
           ./node_modules/.bin/hexo clean
           ./node_modules/.bin/hexo g
           find ./public/images/post_imgs/ -name "*.jpg" -o -name "*.jpeg" | xargs jpegoptim -m 80
+          git config --global user.name "Github Actions"
+          git config --global init.defaultBranch "main"
           ./node_modules/.bin/hexo d
