@@ -103,10 +103,8 @@ theme: redefine
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: 'git'
-  repo:
-    github: 
-      url: 'https://Hexrotor:${{ DEPLOY_TOKEN }}@github.com/Hexrotor/hexrotor.github.io.git'
-      branch: 'main'
+  repo: 'git@github.com:Hexrotor/hexrotor.github.io.git'
+  branch: 'main'
 
 # aplayer
 aplayer:

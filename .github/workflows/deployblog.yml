@@ -18,18 +18,18 @@ jobs:
           node-version: 'latest'
 
       - name: Setup env
-        run: |
-          #mkdir -p ~/.ssh/
-          #echo "$DEPLOY_KEY"> ~/.ssh/id_rsa
-          #chmod 700 ~/.ssh
-          #chmod 600 ~/.ssh/id_rsa
-          #ssh-keyscan github.com >> ~/.ssh/known_hosts
-          #git config --global user.email "tszbbb@qq.com"
-          #git config --global user.name "Hexrotor"
-      
-      - name: hexo build and compress images
         env:
-          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$DEPLOY_KEY"> ~/.ssh/id_rsa
+          chmod 700 ~/.ssh
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.name "Github Actions"
+          git config --global init.defaultBranch "main"
+                
+      - name: hexo build and compress images
         run: |
           sudo apt update && sudo apt install jpegoptim -y
           git clone --depth=1 https://github.com/Hexrotor/blogsrc
@@ -38,6 +38,4 @@ jobs:
           ./node_modules/.bin/hexo clean
           ./node_modules/.bin/hexo g
           find ./public/images/post_imgs/ -name "*.jpg" -o -name "*.jpeg" | xargs jpegoptim -m 80
-          git config --global user.name "Github Actions"
-          git config --global init.defaultBranch "main"
           ./node_modules/.bin/hexo d
