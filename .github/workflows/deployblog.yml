@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     
     steps:
@@ -29,11 +29,13 @@ jobs:
           git config --global user.email "tszbbb@qq.com"
           git config --global user.name "Hexrotor"
       
-      - name: hexo build
+      - name: hexo build and compress images
         run: |
+          sudo apt update && sudo apt install jpegoptim -y
           git clone --depth=1  https://github.com/Hexrotor/blogsrc
-          # git clone --branch=master https://github.com/Hexrotor/blogsrc
           cd blogsrc
           chmod 755 ./node_modules/.bin/hexo
           ./node_modules/.bin/hexo clean
-          ./node_modules/.bin/hexo g -d
+          ./node_modules/.bin/hexo g
+          find ./public/images/post_imgs/ -name "*.jpg" -o -name "*.jpeg" | xargs jpegoptim -f -m 80
+          hexo d
