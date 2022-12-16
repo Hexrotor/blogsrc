@@ -21,15 +21,17 @@ jobs:
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
-          mkdir -p ~/.ssh/
-          echo "$DEPLOY_KEY"> ~/.ssh/id_rsa
-          chmod 700 ~/.ssh
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          git config --global user.email "tszbbb@qq.com"
-          git config --global user.name "Hexrotor"
+          #mkdir -p ~/.ssh/
+          #echo "$DEPLOY_KEY"> ~/.ssh/id_rsa
+          #chmod 700 ~/.ssh
+          #chmod 600 ~/.ssh/id_rsa
+          #ssh-keyscan github.com >> ~/.ssh/known_hosts
+          #git config --global user.email "tszbbb@qq.com"
+          #git config --global user.name "Hexrotor"
       
       - name: hexo build and compress images
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
           sudo apt update && sudo apt install jpegoptim -y
           git clone --depth=1  https://github.com/Hexrotor/blogsrc
@@ -37,5 +39,5 @@ jobs:
           chmod 755 ./node_modules/.bin/hexo
           ./node_modules/.bin/hexo clean
           ./node_modules/.bin/hexo g
-          find ./public/images/post_imgs/ -name "*.jpg" -o -name "*.jpeg" | xargs jpegoptim -f -m 80
+          find ./public/images/post_imgs/ -name "*.jpg" -o -name "*.jpeg" | xargs jpegoptim -m 80
           ./node_modules/.bin/hexo d

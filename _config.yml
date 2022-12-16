@@ -104,7 +104,7 @@ theme: redefine
 deploy:
   type: 'git'
   repo: 'git@github.com:Hexrotor/hexrotor.github.io.git'
-  branch: 'main'
+  token: $DEPOLY_KEY
 
 # aplayer
 aplayer:
