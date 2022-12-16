@@ -2,6 +2,9 @@
 title: 博客搭建
 date: 2022-12-15 9:42:26
 ---
+
+更新于2022-12-16 22:17
+
 以前搭建过博客和Onedrive资源站。资源站是一键式搭建的，但博客是用一个静态网页完全自己手动编辑的，当时不懂博客框架这种东西。这次搭博客我选择用Github+Hexo搭建。域名暂时懒得买了，就用Github Page凑合下。
 
 都是照着教程来的，过程没什么写的，这里简单写一下遇到的坑。
@@ -60,5 +63,15 @@ Mozilla还有个页面可以在线调试字体配置：[https://developer.mozill
 这篇文章中使用的Hexo主题是Butterfly，和我的并不一样。不过我的主题也支持pjax，应该是能实现全局音乐播放的，最后折腾了一番才把我的整好。
 
 遇到一个坑：Aplayer的\<div\>代码一开始是放footer的，但一切换页面左下角播放器就消失了，音乐倒是还在放。然后思考了一下决定把代码放body里，于是修改layout.ejs，成功。
+
+## Jpegoptim
+
+因为博客采用Github Page，所以访问速度有够慢的，live2D经常加载不出来(倒是和Page无关)。考虑到后期上的图可能比较多，不可能每次都手动压缩，我设置了jpg压缩程序，使用的是Jpegoptim，配合find就能实现批量操作。另外，每次加图片都要跑到主题module文件夹里去，因为生成网页源码就从那个地方加载，不知道怎么调，干脆就写了个shell命令从外面文件夹复制图片进去，这样加图片会比较方便。
+
+```Shell
+find ./public/images/post_imgs/ -not -name "*_raw.jpg" -not -name "*_raw.jpeg" -name "*.jpg" -o -name "*.jpeg" | xargs jpegoptim -m 80
+```
+
+上述代码为设置jpg质量为80，jpegoptim会默认跳过一些不需要优化压缩的图片。另外这个优化并不是对原图片进行修改，而是对hexo g之后生成的public文件夹中图片进行修改，原图能得到比较妥善的保管。文件名最后带有_raw的jpg/jpeg图片不会被压缩。
 
 后续待更新
