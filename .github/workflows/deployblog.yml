@@ -38,4 +38,4 @@ jobs:
           ./node_modules/.bin/hexo clean
           ./node_modules/.bin/hexo g
           find ./public/images/post_imgs/ -name "*.jpg" -o -name "*.jpeg" | xargs jpegoptim -f -m 80
-          hexo d
+          ./node_modules/.bin/hexo d
