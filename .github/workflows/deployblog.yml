@@ -18,8 +18,6 @@ jobs:
           node-version: 'latest'
 
       - name: Setup env
-        env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
           #mkdir -p ~/.ssh/
           #echo "$DEPLOY_KEY"> ~/.ssh/id_rsa
@@ -31,7 +29,7 @@ jobs:
       
       - name: hexo build and compress images
         env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
         run: |
           sudo apt update && sudo apt install jpegoptim -y
           git clone --depth=1 https://github.com/Hexrotor/blogsrc
