@@ -49,7 +49,7 @@ style:
     enable: true
     background_image: # 主页大背景
       light: /images/view_light.jpg 
-      dark: /images/view_dark.jpg # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
+      dark: /images/girl_dark.jpg # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
     title_color:
       light: "#fff" # first screen title color (light mode)
       dark: "#d1d1b6" # first screen title color (dark mode)
