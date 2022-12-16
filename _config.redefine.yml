@@ -2,7 +2,7 @@
 #  Your basic info
 # ---------------------------------------------------------------------------------------
 base_info:
-  title: Hexrotor の blog # Site title
+  title: 沐源の记事本 # Site title
   author: Hexrotor # Author name
   url: https://hexrotor.github.io/ # Site url
   # Logo image (You can use local image, image external link or don’t fill)
