@@ -32,7 +32,7 @@ $ net stop LxssManager; net start LxssManager
 
 在电脑端访问我的博客，会加载一个Live2D小人。这玩意儿我很早以前在第一个博客里放过，但是当时完全是静态Html，直接引用一条js即可。现在我使用Hexo，页面是根据主题自动生成的，如何插入js？
 
-主题生成页面时肯定有某些规则文件。研究了一番，发现是在主题根目录的layout文件夹中(仅对于我的主题"redefine"而言)，里面有很多ejs文件，记录了生成页面的规则。找到script.ejs文件添加了js即可。
+主题生成页面时肯定有某些规则文件。研究了一番，发现是在主题根目录的layout文件夹中(仅对于我的主题"redefine"而言)，里面有很多ejs文件，记录了生成页面的规则。找到head.ejs文件添加\<script\>代码即可。
 
 ![](/images/post_imgs/live2djs.jpg)
 
