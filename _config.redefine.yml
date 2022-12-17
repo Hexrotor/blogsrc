@@ -19,7 +19,7 @@ style:
   # primary_color: "#ff0000"
 
   # Avatar (You can use local image or image external link)
-  avatar: /images/avatar.jpg # avatar of the author
+  avatar: https://avatars.githubusercontent.com/u/45112661 # avatar of the author
 
   # Favicon (You can use local image or image external link)
   favicon: https://img.icons8.com/ios-filled/50/null/benzene-ring.png # favicon of the site

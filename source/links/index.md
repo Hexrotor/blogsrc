@@ -7,4 +7,4 @@ date: 2022-12-15 23:27:34
 
 - 博客名称：沐源の记事本
 - 描述：一个网安菜鸡\>\_\<
-- 头像：[https://i1.hdslb.com/bfs/face/ca550ad213d108aec9430dda34ceffa8a806dedb.jpg](https://i1.hdslb.com/bfs/face/ca550ad213d108aec9430dda34ceffa8a806dedb.jpg)
+- 头像：[https://avatars.githubusercontent.com/u/45112661](https://avatars.githubusercontent.com/u/45112661)
