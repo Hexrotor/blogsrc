@@ -96,13 +96,13 @@ int main()
 
 经典tea，先IDA分析：
 
-![](hgame_tea_ida.jpg)
+![](/images/post_imgs/hgame_tea_ida.jpg)
 
 buf2与v8存的是加密数据，buf1存了用户输入的flag，然后buf1各段分四次与a2传入tea函数
 
 tea函数长这样：
 
-![](tea_func.jpg)
+![](/images/post_imgs/tea_func.jpg)
 
 因为xor有那特殊的性质，这里直接把代码改改倒过去算就能还原明文了。a2不知道是个什么东西，但是通过动态调试可以发现其规律
 
