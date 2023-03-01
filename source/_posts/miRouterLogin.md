@@ -4,13 +4,13 @@ date: 2023-03-01 21:20:35
 tags:
 ---
 
-# 小米路由器登录脚本
+# 起源
 
 最近研究了下学校校园网，本来想试试不登录的情况下宿舍和教学楼的IP能否互通，答案是不能。这个脚本本来是为了从宿舍路由器获得WANIP而写的，但既然不能互通，拿到IP也没啥用了。脚本地址：[miRouterLogin](https://github.com/Hexrotor/miRouterLogin)
 
 ## 分析
 
-登进路由器，url是这样的：http://路由器IP/cgi-bin/luci/;stok=3064506d8615d0a05cad3356af54d898/web/home
+登进路由器，url是这样的：`http://路由器IP/cgi-bin/luci/;stok=3064506d8615d0a05cad3356af54d898/web/home`
 
 中间有串参数就是token，我的目的是要模拟网页登录拿到它
 
@@ -18,7 +18,7 @@ tags:
 
 ![](/images/post_imgs/router_pppoe_status.jpg)
 
-url是这样的：http://路由器IP/cgi-bin/luci/;stok=3064506d8615d0a05cad3356af54d898/api/xqnetwork/pppoe_status
+url是这样的：`http://路由器IP/cgi-bin/luci/;stok=3064506d8615d0a05cad3356af54d898/api/xqnetwork/pppoe_status`
 
 可见只要拿到token，一切都好说，为此，我们需要从登录页面入手，了解网页是如何跳转到包含token的网址的。
 
@@ -26,7 +26,7 @@ url是这样的：http://路由器IP/cgi-bin/luci/;stok=3064506d8615d0a05cad3356
 
 总之先在登录界面抓包，我嫌麻烦就在手机上用HttpCanary抓的
 
-总之是发现了登录时会向http://路由器IP/cgi-bin/luci/api/xqsystem/login 这个url发送POST请求，内容是类似`username=admin&password=0afb4d1dc7ce1c48afa11233bc055b9106ba1c8cd&logtype=2&nonce=0_98%3A15%3A3d%3Afb%3A3b%3Acb_1677680921_8869`这样的数据，其中nonce和password都是js动态生成的。
+抓包发现了登录时会向`http://路由器IP/cgi-bin/luci/api/xqsystem/login` 这个url发送POST请求，内容是类似`username=admin&password=0afb4d1dc7ce1c48afa11233bc055b9106ba1c8cd&logtype=2&nonce=0_98%3A15%3A3d%3Afb%3A3b%3Acb_1677680921_8869`这样的数据，其中nonce和password都是js动态生成的。
 
 查找网页源代码，发现登录时调用loginHandle方法
 
