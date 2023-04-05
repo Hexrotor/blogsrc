@@ -51,7 +51,7 @@ WSL 默认安装在 C 盘，可以通过 export 命令将其导出，然后重�
 
 ```PowerShell
 wsl --shutdown #关闭运行中的实例
-wsl --export Ubuntu D:/wsl_export/export.tar #导出为文件
+wsl --export Ubuntu D:\wsl_export\export.tar #导出为文件
 wsl --unregister Ubuntu #注销系统，相当于删除卸载，数据就没有了
 wsl --import Ubuntu D:\wsl\ D:\wsl_export\export.tar --version 2 
 #第一个路径是存放WSL虚拟磁盘vhdx文件的目录，相当于安装目录
@@ -81,7 +81,7 @@ $ vim ~/.bashrc
 
 在文件末尾添加如下代码：
 
-```vim
+```Shell
 # Add wsl ip to Windows hosts
 line="$(ifconfig eth0 | grep 'inet ' | awk '{print $2}') wsl.ubuntu" # 生成替换内容
 sed -i "s/.*wsl.ubuntu.*/$line/g" /mnt/c/Windows/System32/drivers/etc/hosts # 执行替换
@@ -96,7 +96,7 @@ PS C:\Users\hexrotor> ping wsl.ubuntu
 来自 172.18.210.143 的回复: 字节=32 时间<1ms TTL=64
 ```
 
-上面这种方法是依赖 Linux 来写入，我自己最初想的是用 Windows 来写入(废案，仅供参考)：
+上面这种方法是依赖 WSL 来写入，我自己最初想的是用 Windows 来写入(废案，仅供参考)：
 
 ```cmd
 @echo off
