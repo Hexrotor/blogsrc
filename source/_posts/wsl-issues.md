@@ -6,31 +6,31 @@ tags:
 
 # WSL疑难杂症
 
-把总结写在前面：WSL真的依托答辩，新手最好不要用，能折腾死
+把总结写在前面：WSL 真的依托答辩，新手最好不要用，能折腾死
 
 WSL2的网络配置是雷区，非大佬者闲得没事千万不要乱调，否则搞坏了就等着重装吧
 
-我的主系统是Windows 11，WSL是Ubuntu
+我的主系统是 Windows 11，WSL 是 Ubuntu
 
 ### wslhost.exe 调用 mstsc.exe 崩溃导致屏幕闪烁
 
 解决方法写在最前面：
 
-win11系统直接 `wsl --update` 升级到最新版wsl就行了
+win11 系统直接 `wsl --update` 升级到最新版 wsl 就行了
 
-之前用winhex看文件的时候发现看着看着winhex的界面就开始闪烁了，一秒闪一下。打开任务管理器，发现任务管理器界面也开始闪了，除了有点费眼睛之外倒是没影响其他软件使用。
+之前用 winhex 看文件的时候发现看着看着 winhex 的界面就开始闪烁了，一秒闪一下。打开任务管理器，发现任务管理器界面也开始闪了，除了有点费眼睛之外倒是没影响其他软件使用。
 
-当时没有找到原因，直到今天闲着没事看任务管理器，突然看见 `mstsc.exe` (远程桌面连接) 这个进程出现了，这个进程一般是用户手动打开才会出现的，我寻思不会是有人在爆破我的远程桌面吧，难道是中毒了？因为之前有需求用flash，我就在gitlab上找了个纯净版的flash安装了，不会真有病毒吧。
+当时没有找到原因，直到今天闲着没事看任务管理器，突然看见 `mstsc.exe` (远程桌面连接) 这个进程出现了，这个进程一般是用户手动打开才会出现的，我寻思不会是有人在爆破我的远程桌面吧，难道是中毒了？因为之前有需求用 flash ，我就在 gitlab 上找了个纯净版的 flash 安装了，不会真有病毒吧。
 
-随后我看了下进程关系，发现居然是 `wslhost.exe` 在不断启动 `mstsc.exe` ，且mstsc的PID在不断变化，说明进程刚启动又退出了。随后搜索发现有微软官方仓库里有这个[issue](https://github.com/microsoft/wslg/issues/676)，同款问题一模一样。
+随后我看了下进程关系，发现居然是 `wslhost.exe` 在启动 `mstsc.exe` ，且 mstsc 的 PID 在不断变化，说明进程刚启动又退出了。随后搜索发现有微软官方仓库里有这个[issue](https://github.com/microsoft/wslg/issues/676)，同款问题一模一样。
 
 ### WSL安装32位运行库
 
-某天在WSL里运行某32位单文件程序，居然提示我No such file or dict，我思来想去哪里出了问题，但迫于时间关系最后还是尝试用Vm开虚拟机，结果可以运行该程序。
+某天在 WSL 里运行某 32 位单文件程序，居然提示我 No such file or dict，我思来想去哪里出了问题，但迫于时间关系最后还是尝试用Vm开虚拟机，结果可以运行该程序。
 
-既然这样那肯定就是依赖有问题，不会吧WSL不自带32位依赖吗，有点迷
+既然这样那肯定就是依赖有问题，不会吧 WSL 不自带 32 位依赖吗，有点迷
 
-Ubuntu解决方法：
+Ubuntu 解决方法：
 
 ```bash
 sudo dpkg --add-architecture i386
@@ -124,3 +124,9 @@ generateHosts = false
 随后我们重启计算机，刚才的配置就生效了，我们可以编辑 `/etc/hosts` ，删除行 `127.0.1.1       HEXROTOR.   HEXROTOR` 。
 
 到这里还没完，理论上还要配置 Windows 防火墙，这个网上教程挺多的。
+
+### WSL 与 Windows PATH 冲突问题
+
+默认情况下，WSL 的 PATH 中会包含 Windows 的 PATH，这可能会导致很多问题，最常见的是运行 npm 时，Windows 和 WSL 都安装了 node，就会出现冲突问题。
+
+解决方法：在 `/etc/wsl.conf` 中加入 `appendWindowsPath=false`
