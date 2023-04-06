@@ -60,7 +60,7 @@ wsl --import Ubuntu D:\wsl\ D:\wsl_export\export.tar --version 2
 迁移完成后会发现登录用户默认变成 root 了，而最初安装系统的时候应该有提示让设置一个普通用户，所以使用此命令进行将之前的普通用户设置为默认：
 
 ```PowerShell
-ubuntu config --default-user  yourusername
+ubuntu config --default-user yourusername
 ```
 
 ### WSL Windows 网络互相访问方案
