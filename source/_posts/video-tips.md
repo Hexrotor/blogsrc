@@ -14,7 +14,7 @@ Vegas渲染时可以调整帧数和比特率，对于我的视频，这两样不
 
 在渲染时，建议采用720P、12fps
 
-![渲染](https://test1.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/xrrj.jpg)
+![渲染](https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/xrrj.jpg)
 
 为何要将帧数调低？因为帧数低更容易去掉视频中的不和谐感
 
@@ -36,23 +36,23 @@ ffmpeg -i in.mp4 -filter_complex "minterpolate='fps=30'" out.mp4
 
 Vegas中的散焦特效：
 
-![散焦](https://test1.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/fx_sj.jpg)
+![散焦](https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/fx_sj.jpg)
 
 为画面加上这个FX，就能模拟对焦了。配置中有时钟样式的按钮，点击就能按时间轴来配置各个时候的焦点参数。
 
-![config](https://test1.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/fx_sj_config.jpg)
+![config](https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/fx_sj_config.jpg)
 
 早期手机的对焦方式是被动对焦，也就是根据镜头的成像来判断是否对准，所以在对焦时，往往会越过焦点后才能确认到焦点。
 
 模拟的时候也要模拟这个行为：
 
-![](https://test1.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/fx_sj_wave.jpg)
+![](https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/fx_sj_wave.jpg)
 
 如上图，在配置页面的右下脚选择曲线就能这样配置了。模拟对焦并不存在空间的概念，所以数值只有正没有负。
 
 ## 平移和裁剪
 
-![](https://test1.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/pkyi_cdjm.jpg)
+![](https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/pkyi_cdjm.jpg)
 
 如图为Vegas的平移裁剪功能，是非常简陋的，但配合散焦特效也能消除不和谐感。其中的蒙板功能在平时编辑时也是非常有用的，可以去掉素材中的某个部分，或只显示某个部分。
 
@@ -84,11 +84,11 @@ $ ffmpeg -i inputFile.mp4 -an -pix_fmt yuv420p outputFile.y4m
 
 倒放法，也就是将视频倒着放。在Vegas中，可以一键将视频倒放：
 
-![反转](https://test1.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/fjvr.jpg)
+![反转](https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/fjvr.jpg)
 
 右键素材，选择反转，素材就变成倒放了。
 
-![反转](https://test1.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/fjvr_1.jpg)
+![反转](https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/fjvr_1.jpg)
 
 像上图这样，左侧正放，右侧倒放，中间交叉连接，视频就能比较自然地拼在一起，而且连接后的视频，头尾是一致的，重新播放的时候大大降低不和谐感
 
