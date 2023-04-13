@@ -14,23 +14,23 @@ tags:
 
 进入软件，会请求root权限，让你设置存放镜像的目录，这些步骤都没什么说的，重点在于后面。先将手机连上电脑，然后选择USB模式为文件传输。回到软件，进入这个页面：
 
-![Setup](/images/post_imgs/drivedroid_setup.jpg)
+![Setup](https://test1.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/drivedroid_setup.jpg)
 
 这个页面是选择手机USB模拟的模式，这决定了这台手机是否能用于模拟USB/CD-ROM设备。大多数手机选第一个就行了，我的米5选第一个会一直Hosting image。这里我选第二个，先往后看：
 
-![Setup](/images/post_imgs/drivedroid_setup2.jpg)
+![Setup](https://test1.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/drivedroid_setup2.jpg)
 
 这个页面是问你电脑上有没有显示手机设备。打开资源管理器，选择此电脑，就能看到是否有Android设备。
 
 如果有，大概是这样的：
 
-![thispc](/images/post_imgs/thispc.jpg)
+![thispc](https://test1.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/thispc.jpg)
 
 如果没有，我也不知道为什么，反正我的电脑上也没有，就选择No devices了
 
 然后下一步，是要尝试用手机来引导电脑启动：
 
-![boot](/images/post_imgs/drivedroid_setup3.jpg)
+![boot](https://test1.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/drivedroid_setup3.jpg)
 
 就是重启电脑，然后选择BIOS启动项，这里不再赘述，不懂的可以搜下。反正是选比较可疑的那项，一般是带"Linux"字样的，选择后BIOS就会开始引导
 
@@ -38,8 +38,8 @@ tags:
 
 至于我，我一开始压根没试，直接选的启动成功，进到了软件的主页面：
 
-![main](/images/post_imgs/drivedroid_main.jpg)
+![main](https://test1.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/drivedroid_main.jpg)
 
 这里就可以选自己镜像了，建议选择模式为CD-ROM或Writable USB，镜像存放的目录就是一开始让你选的那个目录。图中我已经存了个win8.1的镜像，写这文的时候PE的镜像还在用毒盘以20KB/s的速率下载着。
 
-最后提一嘴，我认为win8.1比win7更好用。虽然这个系统用的人非常少，但用过Server 2012的都知道，那极低的占用率，还有一些说不出来的地方，总之我认为体验比win7更好。当年win10出来，我用2G的机子跑，卡得批爆。当年win defender的服务我还不会关，一开机给你扫盘，哪个机械顶得住？后来我忍无可忍，开始用虚拟机探索各大系统。对，我在2G内存的机子上用虚拟机跑各大系统，又是win8又是ubuntu又是Android x86系列的，虚拟机上觉得行就往物理机上装。我甚至纯Deepin系统用过一段时间，但因为内存不够而经常卡死，现在回想起来难怪当年硬盘会废得那么快。
+最后提一嘴，我认为win8.1比win7更好用。
