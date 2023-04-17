@@ -28,11 +28,13 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           git config --global user.name "Github Actions"
           git config --global init.defaultBranch "main"
+          git config --global user.email "cli@github.com"
                 
       - name: hexo build and compress images
         run: |
           sudo apt update && sudo apt install jpegoptim -y
           git clone --depth=1 https://github.com/Hexrotor/blogsrc
+
           cd blogsrc
           cp -ruf post_imgs/* node_modules/hexo-theme-redefine/source/images/post_imgs
           
