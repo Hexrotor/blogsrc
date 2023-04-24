@@ -156,8 +156,8 @@ sh.interactive()
 payload的`fake ebp` 就是 `ebp2_addr`:
 
 ```
-buffer padding|**fake ebp**|leave_ret_addr|
-buffer padding|**ebp2_addr**|leave_ret_addr|
+buffer padding|fake ebp|leave_ret_addr|
+buffer padding|ebp2_addr|leave_ret_addr|
 ```
 
 利用此payload，我们可以依次做以下事情：
