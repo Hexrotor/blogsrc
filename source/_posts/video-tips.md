@@ -8,7 +8,7 @@ tags:
 
 本文中使用的视频编辑器为Vegas
 
-## 帧数处理
+### 帧数处理
 
 Vegas渲染时可以调整帧数和比特率，对于我的视频，这两样不需要太高。
 
@@ -28,7 +28,7 @@ ffmpeg -i in.mp4 -filter_complex "minterpolate='fps=30'" out.mp4
 
 现在有很多AI插帧，效果都是比较好的
 
-## 模拟对焦
+### 模拟对焦
 
 早些时候的手机，录视频时会时不时出现模糊，那是在对焦。我们可以模拟对焦，并利用模糊来去除视频中的不和谐感。
 
@@ -50,7 +50,7 @@ Vegas中的散焦特效：
 
 如上图，在配置页面的右下脚选择曲线就能这样配置了。模拟对焦并不存在空间的概念，所以数值只有正没有负。
 
-## 平移和裁剪
+### 平移和裁剪
 
 ![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/pkyi_cdjm.jpg)
 
@@ -58,7 +58,7 @@ Vegas中的散焦特效：
 
 暂时只写这些。最近事情多，但天天宅家里到现在还没阳。我好怕过年的时候阳了，那得难受死。
 
-## Virtual Camera
+### Virtual Camera
 
 更新于2022/12/22
 

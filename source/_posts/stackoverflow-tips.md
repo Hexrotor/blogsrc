@@ -5,7 +5,7 @@ tags:
 ---
 本文是本人跟着ctf-wiki上学之后做的笔记，自认为写得比较详细
 
-## 栈转移
+### 栈转移
 
 栈转移是指劫持`SP`指针到我们能控制的位置，以便实现一些之前不方便的操作
 
@@ -46,7 +46,7 @@ gef➤  x/7i 0x000000000040061d
 - bss 段。由于进程按页分配内存，分配给 bss 段的内存大小至少一个页 (4k，0x1000) 大小。然而一般 bss 段的内容用不了这么多的空间，并且 bss 段分配的内存页拥有读写权限。
 - heap。但是这个需要我们能够泄露堆地址。
 
-### X-CTF Quals 2016 - b0verfl0w
+#### X-CTF Quals 2016 - b0verfl0w
 
 ```
 checksec: 什么都没开
@@ -115,7 +115,7 @@ sh.sendline(payload)
 sh.interactive()
 ```
 
-## frame faking(栈伪造)
+### frame faking(栈伪造)
 
 构建一个虚假的栈帧来控制程序的执行流。我们需要同时控制`IP`和`BP`寄存器，这样我们就能在控制程序执行流的同时也改变栈帧的位置
 
@@ -198,7 +198,7 @@ ret # return to target function 需要提前在ebp2_addr+4处写入target functi
 ```
 
 
-### 2018 安恒杯 over.over
+#### 2018 安恒杯 over.over
 
 ```
 over.over: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=99beb778a74c68e4ce1477b559391e860dd0e946, stripped
@@ -234,7 +234,7 @@ int sub_400676()
 这个题的思路是泄露libc执行execve，但可以看出read读96字节但buf长度已经有80字节，所以只能通过覆盖saved rbp和retaddr来劫持`RBP`
 我们向buf上写入rop链，然后劫持`RSP`和`RBP`到此处，这就需要我们知道buf的地址
 
-#### leak stack
+##### leak stack
 
 我们使用`puts`函数泄露出saved rbp，然后就能根据saved rbp的值推算出栈上各个数据的地址
 
@@ -265,7 +265,7 @@ int sub_400676()
 
 当我们泄露出`main`函数的`RBP`，我们对其减0x70，就能得到`buf`的地址了
 
-#### exp：
+##### exp：
 
 本地打：
 
@@ -408,4 +408,4 @@ io.sendafter(b">", payload)
 io.interactive()
 ```
 
-## 待添加
+### 待添加

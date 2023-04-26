@@ -9,7 +9,7 @@ date: 2022-12-15 9:42:26
 
 都是照着教程来的，过程没什么写的，这里简单写一下遇到的坑。
 
-## WSL与Windows共用PATH
+### WSL与Windows共用PATH
 
 安装Nodejs时发现的，因为我Windows和WSL里都装了Nodejs，而WSL的$PATH中居然包含Windows的PATH，导致我在WSL中无法正常运行npm。不是很理解这种机制到底有什么意义。
 
@@ -26,7 +26,7 @@ appendWindowsPath=false
 $ net stop LxssManager; net start LxssManager
 ```
 
-## Live2D
+### Live2D
 
 ![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/xtxnbj.jpg)
 
@@ -38,17 +38,17 @@ $ net stop LxssManager; net start LxssManager
 
 我当年弄网页Live2D就是想要放上血小板那个模型，但当年怎么都找不到，而且技术也不过关。现在看来，这个Live2D接口要自己搭后端，否则就只能用别人的老接口，用现有的模型。最近期末了比较忙没时间整了，先挖个坑以后来填。
 
-## 字体
+### 字体
 
 代码块的默认字体太丑了，换成Consolas了，也是靠修改主题文件中的highlight.styl配置，把font-family参数全部修改。
 
 Mozilla还有个页面可以在线调试字体配置：[https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family)
 
-## 网站源码
+### 网站源码
 
 和我想的不一样，网页的部署是Hexo自动完成的，生成的网页和源码完全是两回事，所以还需要新开一个仓库来保存源码。但是感觉好麻烦，每次都要执行好几次命令，而且我node_module放在项目文件夹里的，git扫描要挺久的。后续想尝试下用Action，push源码后自动运行Hexo生成网页。
 
-## Github Action 自动布署 Hexo
+### Github Action 自动布署 Hexo
 
 参考了这篇文章：[https://zhuanlan.zhihu.com/p/170563000](https://zhuanlan.zhihu.com/p/170563000)
 
@@ -56,7 +56,7 @@ Mozilla还有个页面可以在线调试字体配置：[https://developer.mozill
 
 还有个坑没搞明白，Action上运行Hexo布署网站后，仓库的git log只剩两条了，而我在本地布署并不会这样，~~猜测和clone \-\-depth=1有关~~(没有关系)。
 
-## Aplayer
+### Aplayer
 
 网页左下角的音乐播放器是Aplayer实现的，参考了这篇文章[https://blog.csdn.net/weixin_58068682/article/details/116612364](https://blog.csdn.net/weixin_58068682/article/details/116612364)
 
@@ -64,7 +64,7 @@ Mozilla还有个页面可以在线调试字体配置：[https://developer.mozill
 
 遇到一个坑：Aplayer的\<div\>代码一开始是放footer的，但一切换页面左下角播放器就消失了，音乐倒是还在放。然后思考了一下决定把代码放body里，于是修改layout.ejs，成功。
 
-## Jpegoptim
+### Jpegoptim
 
 因为博客采用Github Page，所以访问速度有够慢的，live2D经常加载不出来(倒是和Page无关)。考虑到后期上的图可能比较多，不可能每次都手动压缩，我设置了jpg压缩程序，使用的是Jpegoptim，配合find就能实现批量操作。另外，每次加图片都要跑到主题module文件夹里去，因为生成网页源码就从那个地方加载，不知道怎么调，干脆就写了个shell命令从外面文件夹复制图片进去，这样加图片会比较方便。
 
