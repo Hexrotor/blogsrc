@@ -99,7 +99,7 @@ home_banner:
     light: https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/view_light.jpg # light mode
     dark: https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/girl_dark.jpg # dark mode
   # Home banner title
-  title: 沐源の记事本
+  title: Welcome here!
   # Home banner subtitle
   subtitle:
     text: ["HexrotorのBlog", "沐源の记事本"] # subtitle text, array

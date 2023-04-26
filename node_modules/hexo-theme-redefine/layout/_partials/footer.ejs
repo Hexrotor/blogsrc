@@ -6,7 +6,7 @@
               <span><%= date(new Date(theme.footer.start), 'YYYY') %></span>
               -
             <% } %>
-            <%= date(new Date(), 'YYYY') %>&nbsp;&nbsp;<%- theme.footer.icon || '<i class="fa-regular fa-computer-classic"></i>' %>&nbsp;&nbsp;<a href="/"><%= theme.info.author || config.author %></a>
+            <%= date(new Date(), 'YYYY') %>&nbsp;&nbsp;<%- theme.footer.icon || '<i class="fa-regular fa-computer-classic"></i>' %>&nbsp;&nbsp;<a href="/"><%= theme.info.author || config.author %>のBlog</a>
         </div>
         <% if (theme.global.busuanzi_counter.enable === true) { %>
             <script async <%= theme.global.pjax === true ? 'data-pjax' : '' %> src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
