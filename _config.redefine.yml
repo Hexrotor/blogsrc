@@ -263,8 +263,8 @@ articles:
     copy: true # Whether to enable code block copy button
     style: mac # mac | simple
     font: # Custom font
-      enable: true # Whether to enable
-      family: "Consolas, 'Liberation Mono', Menlo, 'Microsoft YaHei'" # Font family
+      enable: false # Whether to enable
+      family: Consolas, 'Liberation Mono', Menlo, 'Microsoft YaHei' # Font family
       url: # Font URL to CSS file
   # Table of contents settings
   toc:
