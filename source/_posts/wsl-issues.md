@@ -1,7 +1,9 @@
 ---
 title: WSL疑难杂症记录
 date: 2023-04-05 17:53:52
-tags:
+tags: [Windows, WSL, Linux]
+categories: [技术]
+excerpt: "WSL就是依托答辩"
 ---
 
 ### WSL疑难杂症

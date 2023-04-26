@@ -4,6 +4,7 @@ date: 2022-12-24 20:44:42
 tags: [Android, 操作系统]
 categories: [技术]
 thumbnail: "https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/drivedroid_setup.jpg"
+excerpt: "使用软件DriveDroid实现"
 ---
 
 最近老爸和我说他那边电脑老是启动时显英文字母，我一看就知道是硬盘快不行了，果断下单买了块机械。
