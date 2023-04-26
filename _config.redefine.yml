@@ -264,7 +264,7 @@ articles:
     style: mac # mac | simple
     font: # Custom font
       enable: false # Whether to enable
-      family: # Font family
+      family: Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Microsoft YaHei' # Font family
       url: # Font URL to CSS file
   # Table of contents settings
   toc:
