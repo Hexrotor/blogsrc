@@ -1,6 +1,5 @@
 ---
-title: 关于我
-type: about
+title: about
 date: 2022-12-15 23:31:47
 ---
 
