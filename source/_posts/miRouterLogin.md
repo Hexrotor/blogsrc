@@ -4,7 +4,7 @@ date: 2023-03-01 21:20:35
 tags:
 ---
 
-# 起源
+## 起源
 
 最近研究了下学校校园网，本来想试试不登录的情况下宿舍和教学楼的IP能否互通，答案是不能。这个脚本本来是为了从宿舍路由器获得WANIP而写的，但既然不能互通，拿到IP也没啥用了。脚本地址：[miRouterLogin](https://github.com/Hexrotor/miRouterLogin)
 
