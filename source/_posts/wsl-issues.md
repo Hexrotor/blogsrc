@@ -129,4 +129,9 @@ generateHosts = false
 
 默认情况下，WSL 的 PATH 中会包含 Windows 的 PATH，这可能会导致很多问题，最常见的是运行 npm 时，Windows 和 WSL 都安装了 node，就会出现冲突问题。
 
-解决方法：在 `/etc/wsl.conf` 中加入 `appendWindowsPath=false`
+解决方法：在 `/etc/wsl.conf` 中加入 
+
+```
+[interop]
+appendWindowsPath=false
+```

