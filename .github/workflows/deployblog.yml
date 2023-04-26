@@ -20,7 +20,6 @@ jobs:
       - name: Setup env
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-          GITALK_SECRET: ${{ secrets.GITALK_SECRET }}
         run: |
           mkdir -p ~/.ssh/
           echo "$DEPLOY_KEY"> ~/.ssh/id_rsa
@@ -32,6 +31,8 @@ jobs:
           git config --global user.email "cli@github.com"
                 
       - name: hexo build and compress images
+        env:
+          GITALK_SECRET: ${{ secrets.GITALK_SECRET }}
         run: |
           sudo apt update && sudo apt install jpegoptim -y
           git clone --depth=1 https://github.com/Hexrotor/blogsrc
