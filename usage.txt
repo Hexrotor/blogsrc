@@ -1,0 +1,10 @@
+---
+title: Redefine 主题使用指南
+date: 2022-9-28 11:45:14
+tags: [Hexo]
+categories: [Hexo]
+sticky: 999 # 值越大文章越靠前
+thumbnail: "IMAGE_LINK" # 首页缩略图
+excerpt: "这是文章摘要 This is the excerpt of the post" # 摘要
+cover: "图片链接" # 文章页头图
+---

@@ -1,7 +1,9 @@
 ---
 title: 使用Android手机(rooted)模拟USB或CD-ROM设备来引导电脑启动
 date: 2022-12-24 20:44:42
-tags:
+tags: [Android, 操作系统]
+categories: [技术]
+thumbnail: "https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/drivedroid_setup.jpg"
 ---
 
 最近老爸和我说他那边电脑老是启动时显英文字母，我一看就知道是硬盘快不行了，果断下单买了块机械。

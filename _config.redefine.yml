@@ -189,6 +189,10 @@ navbar:
     enable: true
     # Preload search data when the page loads
     preload: true
+  tags:
+    Tags:
+      icon: fa-solid fa-tags
+      path: /tags/
 # NAVIGATION BAR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
