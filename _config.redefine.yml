@@ -114,7 +114,7 @@ home_banner:
     smart_backspace: true # Whether to smart backspace
   # Color of home banner text
   text_color: 
-    light: "#000" # light mode
+    light: "#fff" # light mode
     dark: "#d1d1b6" # dark mode
   # Specific style of the text
   text_style: 
