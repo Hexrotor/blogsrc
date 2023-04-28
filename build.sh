@@ -1,11 +1,9 @@
 #! /bin/bash
 # Use for local test
-cp -ruf post_imgs/* node_modules/hexo-theme-redefine/source/images/post_imgs
-
-cat replace.sh|bash
-
 hexo clean
 
+cp -ruf post_imgs/* node_modules/hexo-theme-redefine/source/images/post_imgs
+cat replace.sh|bash
 git add -A
 git commit -m "build"
 git push

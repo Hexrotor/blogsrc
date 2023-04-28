@@ -1,13 +1,13 @@
 ---
-title: zsh配置
+title: zsh 配置
 date: 2023-04-28 16:25:36
-tags: [Linux, 操作系统，技巧]
+tags: [Linux, 操作系统, 技巧]
 categories: [技术]
 excerpt: 久闻zsh大名，但我半个月前才开始用，本文简单记录一下配置过程，算是一种备份？
 thumbnail: "https://ohmyz.sh/img/themes/nebirhos.jpg"
 ---
 
-久闻zsh大名，但我半个月前才开始用，本文简单记录一下配置过程，算是一种备份？
+久闻 zsh 大名，但我半个月前才开始用，本文简单记录一下配置过程，算是一种备份？
 
 ### oh-my-zsh
 
@@ -54,7 +54,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 
 作用是 `cd` 的时候自动列出文件夹，按 `TAB` 可以进行选择补全
 
-需要安装fzf：`sudo apt install fzf -y`
+需要安装 fzf ：`sudo apt install fzf -y`
 
 修改 `~/.zshrc`
 
