@@ -21,7 +21,7 @@ info:
 # IMAGE CONFIGURATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 defaults:
   # Favicon
-  favicon: https://img.icons8.com/ios-filled/50/null/benzene-ring.png
+  favicon: /favicon.svg
   # Site logo
   logo: 
   # Site avatar

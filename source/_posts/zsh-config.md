@@ -75,7 +75,7 @@ plugins=(
 
 注意，该插件调用方式`ESC`-`ESC`和 sudo 插件冲突
 
-#### sudo - 快速sudo
+#### sudo - 快速 sudo
 
 按 `ESC` 键两次就能快速将上一次执行的命令前加上 `sudo`
 
