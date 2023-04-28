@@ -137,3 +137,15 @@ generateHosts = false
 [interop]
 appendWindowsPath=false
 ```
+
+### 休眠/睡眠后 WSL 时间出现问题
+
+今天突然发现又有这个问题了，我kernel版本可是已经升到了5.15.90.1，而微软2021年说在5.10.16就修复了这个问题，看来还是没修好
+
+尝试 `sudo hwclock -s` ，并没有作用，随后尝试重启 WSL ，问题解决
+
+搜索相关内容得知除了同步硬件时间，还可以通过 ntp 服务器来同步网络时间
+
+安装ntpdate : `sudo apt install ntpdate`
+
+同步：`sudo ntpdate pool.ntp.org`

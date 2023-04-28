@@ -1,14 +1,17 @@
 ---
 title: zsh配置
 date: 2023-04-28 16:25:36
-tags:
+tags: [Linux, 操作系统，技巧]
+categories: [技术]
+excerpt: 久闻zsh大名，但我半个月前才开始用，本文简单记录一下配置过程，算是一种备份？
+thumbnail: "https://ohmyz.sh/img/themes/nebirhos.jpg"
 ---
 
 久闻zsh大名，但我半个月前才开始用，本文简单记录一下配置过程，算是一种备份？
 
 ### oh-my-zsh
 
-[oh-my-zsh](https://ohmyz.sh/)是一个zsh配置管理器。有了它，配置zsh，安装插件、主题等等都不是难事。
+[oh-my-zsh](https://ohmyz.sh/) 是一个 zsh 配置管理器。有了它，配置 zsh ，安装插件、主题等等都不是难事。
 
 安装 oh-my-zsh :
 
@@ -20,7 +23,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ### 插件安装
 
-oh-my-zsh 自带很多插件，但是需要在~/.zshrc的plugins中手动加入来选择要使用的插件
+oh-my-zsh 自带很多插件，但是需要在 `~/.zshrc` 的 plugins 中手动加入来选择要使用的插件
 
 配置示例：
 
@@ -55,7 +58,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 
 修改 `~/.zshrc`
 
-```shell
+```
 plugins=(
 	...
 	zsh-interactive-cd
@@ -76,4 +79,4 @@ plugins=(
 
 `plugins=(... sudo)`
 
-注意，该插件调用方式`ESC`-`ESC`和[thefuck](#thefuck - 命令纠错)插件冲突
+注意，该插件调用方式 `ESC`-`ESC` 和 [thefuck](#thefuck - 命令纠错) 插件冲突
