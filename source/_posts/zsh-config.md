@@ -52,7 +52,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 
 #### 交互式cd - zsh-interactive-cd
 
-作用是 `cd` 的时候自动列出文件夹，按 `TAB` `可以进行选择补全
+作用是 `cd` 的时候自动列出文件夹，按 `TAB` 可以进行选择补全
 
 需要安装fzf：`sudo apt install fzf -y`
 
@@ -69,9 +69,11 @@ plugins=(
 
 按 `ESC` 键两次就能快速纠错上一次执行的命令
 
+安装：`sudo apt install thefuck -y`
+
 `plugins=(... thefuck)`
 
-注意，该插件调用方式`ESC`-`ESC`和[sudo](#sudo - 快速sudo)插件冲突
+注意，该插件调用方式`ESC`-`ESC`和[sudo](#sudo-快速sudo)插件冲突
 
 #### sudo - 快速sudo
 
@@ -79,4 +81,4 @@ plugins=(
 
 `plugins=(... sudo)`
 
-注意，该插件调用方式 `ESC`-`ESC` 和 [thefuck](#thefuck - 命令纠错) 插件冲突
+注意，该插件调用方式 `ESC`-`ESC` 和 [thefuck](#thefuck-命令纠错) 插件冲突
