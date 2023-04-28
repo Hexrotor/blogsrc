@@ -1,7 +1,10 @@
 ---
 title: 小米路由器登录脚本
 date: 2023-03-01 21:20:35
-tags:
+tags: [Web]
+categories: [技术]
+thumbnail: "https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/loginhandle.jpg"
+excerpt: "使用 Python 脚本登录小米路由器"
 ---
 
 ### 起源

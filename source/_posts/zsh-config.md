@@ -50,7 +50,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugi
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 ```
 
-#### 交互式cd - zsh-interactive-cd
+#### 交互式 cd - zsh-interactive-cd
 
 作用是 `cd` 的时候自动列出文件夹，按 `TAB` 可以进行选择补全
 
