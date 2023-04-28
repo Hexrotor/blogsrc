@@ -34,7 +34,7 @@ plugins=(
   zsh-syntax-highlighting
 )
 ```
-每次修改完配置后，都需要执行 `source .zshrc` 来更新配置，或者重新打开 zsh 终端
+每次修改完配置后，都需要执行 `source ~/.zshrc` 来更新配置，或者重新打开 zsh 终端
 
 #### 自动补全 - zsh-autosuggestions
 
@@ -73,7 +73,7 @@ plugins=(
 
 `plugins=(... thefuck)`
 
-注意，该插件调用方式`ESC`-`ESC`和[sudo](#sudo-快速sudo)插件冲突
+注意，该插件调用方式`ESC`-`ESC`和 sudo 插件冲突
 
 #### sudo - 快速sudo
 
@@ -81,4 +81,4 @@ plugins=(
 
 `plugins=(... sudo)`
 
-注意，该插件调用方式 `ESC`-`ESC` 和 [thefuck](#thefuck-命令纠错) 插件冲突
+注意，该插件调用方式 `ESC`-`ESC` 和 thefuck 插件冲突
