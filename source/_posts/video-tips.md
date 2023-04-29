@@ -1,9 +1,10 @@
 ---
 title: 视频小技巧
 date: 2022-12-20 20:19:55
-tags: [技巧]
+tags: [视频, 技巧, 剪辑]
 categories: [技术]
 excerpt: "最近不得不制作一些视频，所以趁此机会写一些视频方面的花招"
+thumbnail: "https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/pkyi_cdjm.jpg"
 ---
 
 最近不得不制作一些视频，所以趁此机会写一些视频方面的花招
