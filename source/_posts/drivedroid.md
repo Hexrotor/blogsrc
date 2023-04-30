@@ -3,7 +3,7 @@ title: 使用Android手机(rooted)模拟USB或CD-ROM设备来引导电脑启动
 date: 2022-12-24 20:44:42
 tags: [Android, 操作系统]
 categories: [技术]
-thumbnail: "https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/drivedroid_setup.jpg"
+thumbnail: "https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/drivedroid_setup.jpg"
 excerpt: "使用软件DriveDroid实现"
 ---
 
