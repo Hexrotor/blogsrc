@@ -87,11 +87,15 @@ hexo.extend.helper.register('renderJS', function (path) {
         : _js(path_2);
     } else if (this.theme.cdn.provider == "aliyun") {
       return this.theme.cdn.enable
-        ? `<script src="//evan.beee.top/projects/hexo-theme-redefine/v${themeVersion}/source/${path_2}"></script>`
+        ? `<script src="https://npm.elemecdn.com/hexo-theme-redefine@${themeVersion}/source/${path_2}"></script>`
+        : _js(path_2);
+    } else if (this.theme.cdn.provider == "personal") {
+      return this.theme.cdn.enable
+        ? `<script src="https://evan.beee.top/projects/hexo-theme-redefine/v${themeVersion}/source/${path_2}"></script>`
         : _js(path_2);
     } else {
       return this.theme.cdn.enable
-      ? `<script src="https://unpkg.com/hexo-theme-redefine@${themeVersion}/source/${path_2}"></script>`
+      ? `<script src="https://npm.elemecdn.com/hexo-theme-redefine@${themeVersion}/source/${path_2}"></script>`
       : _js(path_2);
     }
   }
@@ -118,6 +122,8 @@ hexo.extend.helper.register('renderCSS', function (path) {
     } else if (this.theme.cdn.provider == "jsdelivr") {
       return `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-redefine@${themeVersion}/source/${path}">`;
     } else if (this.theme.cdn.provider == "aliyun") {
+      return `<link rel="stylesheet" href="//npm.elemecdn.com/hexo-theme-redefine@${themeVersion}/source/${path}">`;
+    } else if (this.theme.cdn.provider == "personal") {
       return `<link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v${themeVersion}/source/${path}">`;
     } else {
       return `<link rel="stylesheet" href="https://unpkg.com/hexo-theme-redefine@${themeVersion}/source/${path}">`;

@@ -1,38 +1,19 @@
 {
-  "_from": "hexo-theme-redefine@latest",
-  "_id": "hexo-theme-redefine@2.1.2",
-  "_inBundle": false,
-  "_integrity": "sha512-RUXNcIGSu0QijRkwLENBDByrArPlsdQc4scuJxLR/EBFnGDiPx+AZdvgPKJVrIcqRZOn3YB9kHZ/4FTWmJgFTg==",
-  "_location": "/hexo-theme-redefine",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "hexo-theme-redefine@latest",
-    "name": "hexo-theme-redefine",
-    "escapedName": "hexo-theme-redefine",
-    "rawSpec": "latest",
-    "saveSpec": null,
-    "fetchSpec": "latest"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/hexo-theme-redefine/-/hexo-theme-redefine-2.1.2.tgz",
-  "_shasum": "44c5c13b5dcef1e47ff237c529706d7e25099ee4",
-  "_spec": "hexo-theme-redefine@latest",
-  "_where": "/mnt/e/blog/blog_git",
-  "author": {
-    "name": "EvanNotFound"
-  },
-  "bugs": {
-    "url": "https://github.com/EvanNotFound/hexo-theme-redefine/issues"
-  },
-  "bundleDependencies": false,
-  "deprecated": false,
+  "name": "hexo-theme-redefine",
+  "version": "2.1.3",
+  "private": false,
   "description": "Redefine your writing with modern style and various functionality in 'Redefine' Hexo Theme.",
-  "homepage": "https://github.com/EvanNotFound/hexo-theme-redefine#readme",
+  "scripts": {
+    "npm:publish": "npm publish",
+    "format": "prettier --write ./source/js/*.js ./scripts",
+    "lint:style": "stylelint --fix ./source/css",
+    "git:push": "git push --tag && git push -u origin dev",
+    "git:add": "npm run lint:style && git add ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvanNotFound/hexo-theme-redefine.git"
+  },
   "keywords": [
     "hexo",
     "theme",
@@ -42,19 +23,10 @@
     "powerful",
     "hexo-theme"
   ],
+  "author": "EvanNotFound",
   "license": "AGPL-3.0",
-  "name": "hexo-theme-redefine",
-  "private": false,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/EvanNotFound/hexo-theme-redefine.git"
+  "bugs": {
+    "url": "https://github.com/EvanNotFound/hexo-theme-redefine/issues"
   },
-  "scripts": {
-    "format": "prettier --write ./source/js/*.js ./scripts",
-    "git:add": "npm run lint:style && git add .",
-    "git:push": "git push --tag && git push -u origin dev",
-    "lint:style": "stylelint --fix ./source/css",
-    "npm:publish": "npm publish"
-  },
-  "version": "2.1.2"
+  "homepage": "https://github.com/EvanNotFound/hexo-theme-redefine#readme"
 }
