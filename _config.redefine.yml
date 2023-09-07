@@ -185,9 +185,9 @@ navbar:
     About: 
       icon: fa-regular fa-user
       submenus:
-        Me: /about
+        Me: /about/
         Github: https://github.com/Hexrotor/blogsrc
-        Friends: /friends
+        Friends: /links/
     # Archives: 
     #   path: /archives 
     #   icon: fa-regular fa-archive # can be empty

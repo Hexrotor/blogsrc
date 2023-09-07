@@ -1,9 +1,15 @@
-- name: EvanNotFound
-  link: https://www.evanluo.top
-  description: 主题作者的博客
-  avatar: https://evan.beee.top/avatar.png
+- links_category: Author
+  has_thumbnail: false
+  list:
+  - name: EvanNotFound
+    link: https://www.evanluo.top
+    description: 主题作者的博客
+    avatar: https://evan.beee.top/avatar.png
 
-- name: 闪闪の小窝
-  link: https://moechun.fun
-  description: 来玩！玩累了…就睡觉！没问题的！
-  avatar: https://img.moechun.fun/avatar/hanajiang-2.png
+- links_category: My friends
+  has_thumbnail: false
+  list:
+  - name: 闪闪の小窝
+    link: https://moechun.fun
+    description: 来玩！玩累了…就睡觉！没问题的！
+    avatar: https://img.moechun.fun/avatar/hanajiang-2.png
