@@ -7,4 +7,4 @@ cat replace.sh|bash
 git add -A
 git commit -m "build"
 git push
-rm -r themes/redefine/source/images/post_imgs*
+rm -r themes/redefine/source/images/post_imgs/*
