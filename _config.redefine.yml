@@ -368,10 +368,10 @@ inject:
   enable: True
   # Inject custom head html code
   head: 
-    - '<!-- require APlayer --><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>'
+    - '<!-- require APlayer --><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>'
     - '<!-- require MetingJS --><script src="https://fastly.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>'
     - '<!-- live 2D --><script src="https://fastly.jsdelivr.net/gh/Hexrotor/live2d-widget@latest/autoload.js"></script>'
-    - '<!-- firework --><script src="/js/plugins/firework.js"></script>'
+    - '<!-- firework --><script src="/js/plugins/fireworks.js"></script>'
     -
   # Inject custom footer html code
   footer:
