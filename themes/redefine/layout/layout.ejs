@@ -2,18 +2,20 @@
 <html lang="<%= config.language %>">
 <%- partial('_partials/head') %>
 <body>
-<canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:99999999;pointer-events:none;"></canvas>
 <%- body %>
 <%- partial('_partials/scripts') %>
 <% if (theme.plugins.aplayer.enable) { %>
     <%- partial('_plugins/aplayer') %>
 <% } %>
-<-- div id="aplayer" class="aplayer aplayer-fixed" data-id="7637965554" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" data-showlrc="false" data-lrc-type="0" muted></div>
+<-- div id="aplayer" class="aplayer aplayer-fixed" data-id="7637965554" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" data-showlrc="false" data-lrc-type="0" muted></div -->
 <meting-js
     server="netease"
     type="playlist"
     id="7637965554"
-	fixed="true">
+	fixed="true"
+	showlrc="false"
+	lrc-type="0"
+	muted>
 </meting-js>
 </body>
 </html>
