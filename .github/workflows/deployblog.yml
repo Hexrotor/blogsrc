@@ -39,7 +39,7 @@ jobs:
 
           cd blogsrc
           sed -i "s@SECRET_TO_BE_REPLACE@$GITALK_SECRET@g" _config.redefine.yml
-          cp -ruf post_imgs/* node_modules/hexo-theme-redefine/source/images/post_imgs
+          cp -ruf post_imgs/* themes/redefine/source/images/post_imgs
           
           # replace images links with jsdelivr cdn
           cat replace.sh|bash
