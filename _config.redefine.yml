@@ -369,7 +369,7 @@ inject:
   # Inject custom head html code
   head: 
     -
-    <!-- require APlayer -->
+    '<!-- require APlayer -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
     <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
     <!-- require MetingJS -->
@@ -377,7 +377,7 @@ inject:
     <!-- live 2D -->
     <script src="https://fastly.jsdelivr.net/gh/Hexrotor/live2d-widget@latest/autoload.js"></script>
     <!-- firework -->
-    <script src="/js/firework.js"></script>
+    <script src="/js/firework.js"></script>'
     -
   # Inject custom footer html code
   footer:
