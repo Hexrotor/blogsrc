@@ -12,7 +12,7 @@ excerpt: "WSL就是依托答辩"
 
 WSL2的网络配置是雷区，非大佬者闲得没事千万不要乱调，否则搞坏了就等着重装吧
 
-我的主系统是 Windows 11，WSL 是 Ubuntu
+我的主系统是 Windows 11，WSL 是 Ubuntu + kali(推荐)
 
 ### wslhost.exe 调用 mstsc.exe 崩溃导致屏幕闪烁
 
@@ -131,11 +131,26 @@ generateHosts = false
 
 默认情况下，WSL 的 PATH 中会包含 Windows 的 PATH，这可能会导致很多问题，最常见的是运行 npm 时，Windows 和 WSL 都安装了 node，就会出现冲突问题。
 
+同时这样的设置也可能会使 ZSH 用户感到困扰，因为 WSL 访问 Windows 目录有速度衰减，而 ZSH 用户往往会使用类似 AutoSuggestion 插件对输入的命令进行实时检查是否可用，这导致ZSH会疯狂对所有 PATH 进行遍历查找，表现出来就是输命令一卡一卡的，回显很慢。
+
 解决方法：在 `/etc/wsl.conf` 中加入 
 
 ```
 [interop]
 appendWindowsPath=false
+```
+
+但这样也许有点一刀切，有些目录是有用的，比如 VSCode 就能实现快速编辑 WSL 中的文件而不用去手动修改目录
+
+以及 Pwntools 的分屏功能，Pwntools 会在使用 gdb.* 系列代码时尝试调用系统中的终端(仅测试过 WSL kali-linux)，如果你的 PATH 中有Windows Terminal，那么配合 Pwndbg 展现出来的就是原生的分屏调试，非常好用
+
+~/.zshrc 参考：
+
+```vim
+# Windows PATH
+export WIN_PATH=/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/Users/hex/AppData/Local/Microsoft/WindowsApps:"/mnt/d/Microsoft VS Code/bin"
+
+PATH=$PATH:$WIN_PATH
 ```
 
 ### 休眠/睡眠后 WSL 时间出现问题
@@ -149,3 +164,52 @@ appendWindowsPath=false
 安装ntpdate : `sudo apt install ntpdate`
 
 同步：`sudo ntpdate pool.ntp.org`
+
+### 附录
+
+以下问题与 WSL 无关，与 Linux 软件配置有关
+
+#### vim
+
+设置缩进4，显示行号等
+
+```/etc/vim/vimrc
+set tabstop=4 
+set softtabstop=4 
+set shiftwidth=4 
+set noexpandtab 
+set nu #行号，看个人需求，会影响多行复制
+set autoindent 
+set cindent
+```
+
+禁用视觉模式(不检测鼠标事件)
+
+打开配置文件：
+
+```
+sudo vim /usr/share/vim/vim90/defaults.vim
+```
+
+搜索找到 mouse 行，用`"`将其注释
+"if has('mouse')
+"  if &term =~ 'xterm'
+"    set mouse=a
+"  else
+"    set mouse=nvi
+"  endif
+"endif
+
+#### docker
+
+kali 的 docker-compose 版本过低，故从 Github 下载安装
+
+```shell
+sudo curl -SL https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose && sudo chmod 755 /usr/local/bin/docker-compose
+```
+
+而 Ubuntu 的 docker 本身支持性就有问题，使用如下命令安装：
+
+```shell
+curl https://get.docker.com | sh
+```
