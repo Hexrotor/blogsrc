@@ -142,7 +142,7 @@ appendWindowsPath=false
 
 但这样也许有点一刀切，有些目录是有用的，比如 VSCode 就能实现快速编辑 WSL 中的文件而不用去手动修改目录
 
-以及 Pwntools 的分屏功能，Pwntools 会在使用 gdb.* 系列代码时尝试调用系统中的终端(仅测试过 WSL kali-linux)，如果你的 PATH 中有Windows Terminal，那么配合 Pwndbg 展现出来的就是原生的分屏调试，非常好用
+以及 Pwntools 的分屏功能，Pwntools 会在使用 gdb.* 系列代码时尝试调用系统中的终端(仅测试过 WSL kali-linux)，如果你的 PATH 中有 Windows Terminal，那么配合 Pwndbg 展现出来的就是原生的分屏调试，非常好用
 
 ~/.zshrc 参考：
 
@@ -192,6 +192,8 @@ sudo vim /usr/share/vim/vim90/defaults.vim
 ```
 
 搜索找到 mouse 行，用`"`将其注释
+
+```
 "if has('mouse')
 "  if &term =~ 'xterm'
 "    set mouse=a
@@ -199,6 +201,7 @@ sudo vim /usr/share/vim/vim90/defaults.vim
 "    set mouse=nvi
 "  endif
 "endif
+```
 
 #### docker
 
