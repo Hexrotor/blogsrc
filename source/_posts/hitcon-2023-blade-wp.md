@@ -9,7 +9,7 @@ excerpt: "只做了这道题"
 
 ### 表面行为分析
 
-首先运行程序，会进入一个交互界面，然后提示可以进入 server 模式，并且 `run` 之后打印出来一串 shellcode
+首先运行程序，会进入一个交互界面，然后提示可以进入 server 模式，并且 `run` 之后打印出来一串 opcode
 
 ![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_run.jpg)
 
@@ -29,7 +29,7 @@ nc 连 server，server 提示连接成功，`help` 查看指令
 b'T]1\xf6\x81\xc6\x00\x10\x00\x00H)\xf4T_jOX\x0f\x05PH\x92H\x83\xc2\x08S_T^j\x01X\x0f\x05U\\A\xff\xe7'
 ```
 
-有点抽象，难道是 `pwd` 执行结果加密后的数据表现吗？那么 flag 有可能和这个是同一套加密，那么也许可以先找到这套加密代码，再看看程序中有无藏匿的 flag 加密后数据，从而得到原 flag。但是这个猜想不一定对，我又尝试执行了 `ls` ，得到的数据和上面的差不多，而且比较短，感觉文件名加密后不可能才这么点长。于是我将其复制到 IDA 里 c 一下，发现这玩意儿是 shellcode，疑似是实现其列出的操作的代码，但是这样打印出来不知道干嘛的。
+有点抽象，难道是 `pwd` 执行结果加密后的数据表现吗？那么 flag 有可能和这个是同一套加密，那么也许可以先找到这套加密代码，再看看程序中有无藏匿的 flag 加密后数据，从而得到原 flag。但是这个猜想不一定对，我又尝试执行了 `ls` ，得到的数据和上面的差不多，而且比较短，感觉文件名加密后不可能才这么点长。于是我将其复制到 IDA 里 c 一下，发现这玩意儿是 opcode，疑似是实现其列出的操作的代码，但是这样打印出来不知道干嘛的。
 
 到这里程序表象已经看不出来什么了，接下来是逆向环节
 
@@ -176,11 +176,11 @@ def reverse_order(data:list, table: list):
 
 ![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_func_verify_1.jpg)
 
-如图是 256 次循环后的开头代码，这次 `memcpy` 加载了一块 255 字节的数据到堆中，但不是 `dest`。经过查看，这个数据又是 shellcode
+如图是 256 次循环后的开头代码，这次 `memcpy` 加载了一块 255 字节的数据到堆中，但不是 `dest`。经过查看，这个数据又是 opcode
 
 经过调试发现 `dest` 加载了 64 字节的数据，那么这个数据很有可能是比较数据，直接拿到脚本里去跑，解出来却是乱码。一开始以为脚本写错了，但拿个明文加密的提取的数据去跑，确实是能跑出明文的，说明比对部分还有细节。
 
-在上图中，shellcode 的某些部分被修改了，并且与加密后的输入有关，随后我又偶然发现 `if` 中对索引 `[223, 224, 225, 226]` 赋的值和 `dest` 开头的 4 字节一致，但仍然没看出来有什么比较。
+在上图中，opcode 的某些部分被修改了，并且与加密后的输入有关，随后我又偶然发现 `if` 中对索引 `[223, 224, 225, 226]` 赋的值和 `dest` 开头的 4 字节一致，但仍然没看出来有什么比较。
 
 继续向后看，发现会读取 TcpStream io 之类的，不然会卡住等待输入，在 nc 那边输点东西就可以继续跑
 
@@ -188,9 +188,9 @@ def reverse_order(data:list, table: list):
 
 ![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_func_verify_2.jpg)
 
-我一开始以为这个就是比较函数，但是仔细看发现根本没有比较的操作，而是又是在对 shellcode 进行修改操作，并且将 shellcode 数据发送到 nc 端，与之前那个 `if` 里的代码行为一致，应该是编译优化导致的。
+我一开始以为这个就是比较函数，但是仔细看发现根本没有比较的操作，而是又是在对 opcode 进行修改操作，并且将 opcode 数据发送到 nc 端，与之前那个 `if` 里的代码行为一致，应该是编译优化导致的。
 
-看了半天确定这个程序里确实没有任何比较操作，我将目光转向那个 shellcode。经过辨认发现 shellcode 被修改的值是如下两个地方：
+看了半天确定这个程序里确实没有任何比较操作，我将目光转向那个 opcode。经过辨认发现 opcode 被修改的值是如下两个地方：
 
 ```asm
 .text:0000564D3A41F1FD                 mov     eax, 1015CB52h # 加密的用户输入
@@ -203,7 +203,7 @@ def reverse_order(data:list, table: list):
 .text:0000564D3A41F215                 jnz     short loc_564D3A41F21C
 ```
 
-程序中的行为是取加密后的用户输入与 `dest` 中的值写入 shellcode 这两处，而这个 shellcode 也很明显能看出来是在验证。但是这其中 `r12 r13 r14` 寄存器的值都是未知的，我的猜测是 shellcode 前面执行的代码会影响这三个寄存器，使其在运行到此处时为定值。所以我运行了该 shellcode，得到三个寄存器的值：
+程序中的行为是取加密后的用户输入与 `dest` 中的值写入 opcode 这两处，而这个 opcode 也很明显能看出来是在验证。但是这其中 `r12 r13 r14` 寄存器的值都是未知的，我的猜测是 opcode 前面执行的代码会影响这三个寄存器，使其在运行到此处时为定值。所以我运行了该 opcode，得到三个寄存器的值：
 
 ```asm
 r12 = 0x0000000464C457F
@@ -231,7 +231,7 @@ def de_cmp(x):
     return [x & 0xff, (x & 0xff00) >> 8, (x & 0xff0000) >> 16, (x & 0xff000000) >> 24]
 ```
 
-总的来看，整个程序其实根本没有验证 flag 的正确性，也没有执行这些 shellcode，这些 shellcode 只是被作为数据发送到了 nc 端
+总的来看，整个程序其实根本没有验证 flag 的正确性，也没有执行这些 opcode，这些 opcode 只是被作为数据发送到了 nc 端
 
 ### EXP
 
