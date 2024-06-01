@@ -1,7 +1,7 @@
 ---
 title: WSL疑难杂症记录
 date: 2023-04-05 17:53:52
-tags: [Windows, WSL, Linux]
+tags: [Windows, WSL, Linux, TroubleShooting]
 categories: [技术]
 excerpt: "WSL就是依托答辩"
 ---
