@@ -42,7 +42,9 @@ categories: [技术]
 
 驱动直接装上，一点毛病没有，浏览器都能调用，甚至任务栏小图标还给个显卡图标，可以调模式。但是建议不要调，亲测调成 Intel 节能模式后图形界面启动不了，就用 Nvidia 性能模式就行了
 
-但是比较难受的是，笔记本屏幕怎么搞都只能 60 帧，外接屏能 165 帧没问题。没有外接屏又想装这个系统的要多考虑下了。
+~~但是比较难受的是，笔记本屏幕怎么搞都只能 60 帧，外接屏能 165 帧没问题。没有外接屏又想装这个系统的要多考虑下了。~~
+
+更正：更新内核到6.x即可解决显示器帧率问题，GPU模式依旧不建议调，双屏会出现 DPI bug
 
 #### QQ 登录
 
@@ -62,7 +64,23 @@ categories: [技术]
 Linux Zephyrus 5.15.0-107-generic #117-Ubuntu SMP Fri Apr 26 12:26:49 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
-这个内核版本似乎没有对大小核进行优化，导致我开个网页 CPU 温度都能上 80，后续可能研究一下能不能升级内核
+一开始我以为是这个内核没有针对大小核进行优化，就升级了内核到 6.x，结果歪打正着解决了显示器帧率问题。并且我搜到 Linux Mint 的[论坛](https://forums.linuxmint.com/viewtopic.php?t=420077)居然有个人和我问一模一样的问题，电脑配置都和我一样
+
+然后升级了内核，CPU 温度还是高，于是又继续研究，最终找到了解决方案
+
+```bash
+# Disable CPU frequence turbo
+echo 1>/sys/devices/system/cpu/intel_pstate/no_turbo
+
+# List available CPU power preferences 
+cat policy0/energy_performance_available_preferences 
+# default performance balance_performance balance_power power 
+
+# Set CPU power config from "balance_performance" to "balance_power"
+echo "balance_power"|tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference
+```
+
+这样修改后，CPU 已经基本能压到六十多度，风扇再转基本就是 GPU 驱动的问题了
 
 #### 科学上网
 
