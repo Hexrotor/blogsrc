@@ -39,7 +39,7 @@ jobs:
 
           cd blogsrc
           sed -i "s@SECRET_TO_BE_REPLACE@$GITALK_SECRET@g" _config.redefine.yml
-          cp -ruf post_imgs/* themes/redefine/source/images/post_imgs
+          cp -rf post_imgs/* themes/redefine/source/images/post_imgs
           
           # replace images links with jsdelivr cdn
           cat replace.sh|bash
@@ -50,7 +50,7 @@ jobs:
           find ./public/images/post_imgs/ -not -iname "*_raw.jpg" -not -iname "*_raw.jpeg" -iname "*.jpg" -o -iname "*.jpeg" | xargs jpegoptim -m 80
           
           echo "Use static css file"
-          cp -ruf style.css ./public/css/style.css
+          cp -f style.css ./public/css/style.css
           echo `md5sum ./public/css/style.css`
 
           ./node_modules/.bin/hexo d
