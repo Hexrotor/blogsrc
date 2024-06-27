@@ -48,5 +48,9 @@ jobs:
           ./node_modules/.bin/hexo clean
           ./node_modules/.bin/hexo g
           find ./public/images/post_imgs/ -not -iname "*_raw.jpg" -not -iname "*_raw.jpeg" -iname "*.jpg" -o -iname "*.jpeg" | xargs jpegoptim -m 80
-          cp -ruf ./style.css ./public/css/style.css
+          
+          echo "Use static css file"
+          cp -ruf style.css ./public/css/style.css
+          echo `md5sum ./public/css/style.css`
+
           ./node_modules/.bin/hexo d
