@@ -9,7 +9,7 @@
 - links_category: Syclover
   has_thumbnail: false
   list:
-  - name: O2takuXX
+  - name: o2takuXX
     link: http://47.98.179.225/
     description: Web 爷的含金量不用多说
     avatar: https://avatars.githubusercontent.com/u/116420674?s=80
@@ -23,3 +23,8 @@
     link: http://1.117.175.65/
     description: 每日大赛Lover
     avatar: https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/avatars/Muscial.jpg
+
+  - name: Halois
+    link: http://galoishlee.github.io/
+    description: 无敌密码✌
+    avatar: https://avatars.githubusercontent.com/u/131850499?s=80
