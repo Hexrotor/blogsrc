@@ -940,7 +940,7 @@ video {
 }
 
 .bg-background-color {
-  background-color: var(--background-color);
+  background-color: #252424fa;/*var(--background-color);*/
 }
 
 .object-cover {

@@ -774,7 +774,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  color: var(--default-text-color);
+  color: #efefef;/*var(--default-text-color);*/
   background: var(--background-color);
   font-family: Satoshi-Variable, Noto Sans SC, -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial;
   font-weight: 450;
@@ -4219,7 +4219,7 @@ html.is-animating .swup-progress-icon {
   color: var(--default-text-color);
 }
 .navbar-container .navbar-content .right .mobile .icon-item i {
-  color: var(--default-text-color);
+  color: #efefef;/*var(--default-text-color);*/
 }
 .navbar-container .navbar-content .right .mobile .icon-item:first-child {
   margin-left: 0;
@@ -4235,7 +4235,7 @@ html.is-animating .swup-progress-icon {
   width: 18px;
   height: 2.5px;
   position: relative;
-  background: var(--default-text-color);
+  background: #efefef;/*var(--default-text-color);*/
 }
 .navbar-drawer-show .navbar-container .navbar-content .right .mobile .navbar-bar .navbar-bar-middle {
   background: transparent;
@@ -4247,7 +4247,7 @@ html.is-animating .swup-progress-icon {
   left: 0;
   width: 100%;
   height: 2.5px;
-  background: var(--default-text-color);
+  background: #efefef;/*var(--default-text-color);*/
   transition-property: color, background, box-shadow, border-color, transform;
   transition-delay: 0s, 0s, 0s, 0s, 0s;
   transition-duration: 0.2s, 0.2s, 0.2s, 0.2s, 0.38s;
