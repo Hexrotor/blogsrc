@@ -42,7 +42,7 @@ excerpt: "计算机、网络安全通用使用技能 (CTF Misc)"
 
 以上技巧以及一些未列出的技巧都可以在 Google 的高级搜索中找到
 
-![高级搜索](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/advantage_search.png)
+![高级搜索](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/advantage_search.png)
 
 #### 图片搜索引擎
 
@@ -77,7 +77,7 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
 - [MioBT www.miobt.com](https://www.miobt.com/) 等镜像站
   国内 BT 发布网站，他们搞了个联盟，导致有长得几乎一模一样的镜像站，主站进去有个人机校验，所以我平时喜欢用镜像站[漫猫 comicat.org](https://comicat.org/)
 
-![漫猫](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/comicat.png)
+![漫猫](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/comicat.png)
 
 本节主要介绍搜索引擎，关于 BT 技术不过多深入。
 
