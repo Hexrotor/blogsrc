@@ -8,3 +8,5 @@ thumbnail: "IMAGE_LINK" # 首页缩略图
 excerpt: "这是文章摘要 This is the excerpt of the post" # 摘要
 cover: "图片链接" # 文章页头图
 ---
+
+imgs/
