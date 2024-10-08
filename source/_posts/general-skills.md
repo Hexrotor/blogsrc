@@ -109,7 +109,7 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
 
 我们经常在网上看到一些 GIF 动图，有些动图的颜色一看就觉得比较奇怪，和视频的颜色完全没法比，这就是因为 GIF 传统的编码器只支持 8 位色，俗称 256 色。
 
-![位深度](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/color_depth.png)
+![位深度](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/color_depth.png)
 
 ##### 分辨率
 
@@ -152,6 +152,6 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
    
    下面是我用工具画的一个矢量图，在 F12 中打开它的源文件可以看到路径代码。
    
-   ![svg](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/svg_example.svg)
+   ![svg](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_example.svg)
 
 #### 持续更新中(10.8)
