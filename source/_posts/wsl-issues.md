@@ -1,6 +1,7 @@
 ---
 title: WSL疑难杂症记录
 date: 2023-04-05 17:53:52
+update: 2024-10-09 15:45:17
 tags: [Windows, WSL, Linux, TroubleShooting]
 categories: [技术]
 excerpt: "WSL就是依托答辩"
@@ -126,6 +127,16 @@ generateHosts = false
 随后我们重启计算机，刚才的配置就生效了，我们可以编辑 `/etc/hosts` ，删除行 `127.0.1.1       HEXROTOR.   HEXROTOR` 。
 
 到这里还没完，理论上还要配置 Windows 防火墙，这个网上教程挺多的。
+
+#### 2024.10.09 WSL 支持配置网络类型
+
+最近不知道哪次更新后开始菜单多了个 WSL Settings，我一看好家伙，很多东西都能调，甚至能自定义 Linux 内核。不过最重要的是它支持了调整网络类型，以前 WSL 2 默认是 Nat 模式，Windows 层 System Proxy 要同步进去还蛮麻烦的，而现在可以直接把网络类型更改为 mirror 模式，
+
+![WSL Settings](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/wsl_settings.png)
+
+如图上图，网络有 4 种模式，选择 mirror 的话 IP 会全部继承 Windows，包括 IPv6。并且直接通过 localhost+端口号就能实现双方互相访问，而且能自动同步 Windows 层配置的 localhost System Proxy，省去了人工步骤。
+
+![WSL Mirror](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/wsl_mirror.jpg)
 
 ### WSL 与 Windows PATH 冲突问题
 
