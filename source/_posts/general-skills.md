@@ -215,7 +215,7 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
 
 它支持对帧进行处理，包括尺寸调整、帧延时 (每帧停留时间)、重复帧分析 (移除重复帧可以有效减少体积)、打码、文字、进度条、自由绘制
 
-它提供了多种编码器，能够调整 GIF 颜色，控制质量和体积，总的来说是一个不错的软件，下图为用其制作的一张动图。
+它提供了多种编码器，能够调整 GIF 颜色，控制质量和体积，还能编码保存 Webp、APNG 等动图格式，总的来说是一个不错的软件，下图为用其制作的一张 GIF 动图。
 
 ![GIF example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/gif_example.gif)
 
