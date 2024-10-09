@@ -1,10 +1,10 @@
 ---
 title: 计算机通用技能
 date: 2024-09-04 19:54:17
-update: 2024-10-09 15:45:17
 tags: [Windows, Linux, CTF, Misc]
 categories: [技术]
 excerpt: "计算机、网络安全通用使用技能 (CTF Misc)"
+sticky: 999
 ---
 
 # 简介
