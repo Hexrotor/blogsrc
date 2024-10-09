@@ -160,7 +160,7 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
 
       我以前有个索尼的卡片式相机拍摄的照片就是这种 JPEG，因为相机的储存卡读取速度有限，浏览相册时并不能快速地加载整个图像，而这种渐进式 JPEG 又很适合快速翻阅照片预览的情况，若是使用普通 JPEG，从上到下加载的图片根本就没办法快速翻阅预览。
 
-      [这张图片](imgs/skills_img/jpeg_prog_example.jpg)是一个渐进式 JPEG，读者可以用上述方法感受一下加载过程。
+      [这张图片](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/jpeg_prog_example.jpg)是一个渐进式 JPEG，读者可以用上述方法感受一下加载过程。
 
    JPEG 的唯一缺点就是，它是有损压缩，正因如此，它是不支持透明像素 (Alpha 通道) 的，并且压缩程度过大就会产生明显的色块。放大我博客的夜间模式首页图可以发现，实际上它是很模糊的，有很多方形的色块。
 
