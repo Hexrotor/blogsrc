@@ -179,12 +179,18 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
    
    正如其名字，它是专门设计用于 Web 浏览器上的网络图像格式，拥有高压缩比，且显示效果优于 JPEG，它可以在 Web 上完全代替所有图片格式，是未来的趋势。
 
+   下面是一张无损动态 Webp 图片，体积仅为 `913KB`，而 GIF 要做到同等效果至少需要 `1.2MB`
+
+   ![Webp example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/webp_example.webp)
+
 - SVG
-   SVG 是一种矢量格式，和传统图片不同，它不是保存像素，而是靠代码来实现绘制线条路径等，所以它不像普通图片那样放大就变糊，因为它是实时绘制的。
+   SVG 是一种矢量格式，和传统图片位图不同，它不是保存像素，而是靠代码来实现绘制线条路径等，所以它不像普通图片那样放大就变糊，因为它是实时绘制的。既然它是实时绘制并且依靠代码，那么完全可以将它设计成支持动态变换——事实上也确实如此。SVG 和 Web 离不开关系，它可以和 Web 控件互动，实现精美的网页效果。
    
-   下面是我用工具画的一个矢量图，在 F12 中打开它的源文件可以看到路径代码。
+   下面是我用工具乱画的一个 SVG 矢量图以及网上找的一个动态 SVG 图，在 F12 中打开源文件可以看到路径代码。
    
-   ![svg](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_example.svg)
+   ![SVG example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_example.svg)
+
+   ![SVG animation exmaple](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_animated_exmaple.svg)
 
 - BMP
    BMP 是由微软开发的一种图像格式，广泛应用于 Windows 系统中，支持 8~32 位色，几乎不压缩数据，也因此它的体积往往远大于其他格式。读者可以找张 BMP 图片用我本小节开头说的那个方法计算一下该图所有像素需要的字节表示量，你会发现结果差不多和 BMP 图片体积一样大。
