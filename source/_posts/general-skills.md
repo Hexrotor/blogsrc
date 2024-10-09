@@ -81,6 +81,24 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
 
 本节主要介绍搜索引擎，关于 BT 技术不过多深入。
 
+#### 互联网档案馆 archive.org
+
+[互联网档案馆 archive.org](https://archive.org/) 是一个互联网存档项目，该网站收集了众多互联网产物，其中最多的是它的 [Web 档案馆 web.archive.org](https://web.archive.org/)，俗称 Wayback Machine，该分类收集了数量难以想象的网页快照，这使得它成为了互联网历史溯源的一个重要工具。
+
+如下图，在输入框中输入域名 `mikufans.cn` (B 站早期) 即可搜索到诸多快照点，其中有 2009 年的快照。
+
+![Search](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/wayback_searchExample.png)
+
+点开最早时间为 July 14, 2009 20:20:42 的快照，就能看到早期 B 站的网页大致内容。由于当时 B 站不允许抓取 CSS 样式表，所以快照的排版效果不太好，但是依旧能看到视频标题等诸多内容。
+
+![mikufans.cn](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/wayback_mikufans.png)
+
+虽然上述例子中快照没有图片，但实际上是会抓取图片的，将域名换成 `bilibili.us` 重新找一个快照：
+
+![bilibili.us](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/wayback_bilibili.jpg)
+
+虽然能保存图片快照，但并不是所有图片都可以，有些图片会失效，可能是外链导致的。
+
 ### 媒体篇
 
 本篇的“媒体”表示图片、视频、音乐等网络信息传播文件形式，了解了这些媒体文件的本质就能更好地处理相关问题。
