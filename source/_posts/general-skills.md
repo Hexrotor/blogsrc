@@ -1,9 +1,9 @@
 ---
-title: 计算机通用技能
+title: 计算机通用技能进阶扫盲
 date: 2024-09-04 19:54:17
 tags: [Windows, Linux, CTF, Misc]
 categories: [技术]
-excerpt: "计算机、网络安全通用使用技能 (CTF Misc)"
+excerpt: "计算机、网络安全通用知识进阶扫盲 (CTF Misc)"
 sticky: 999
 ---
 
@@ -124,9 +124,11 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
 
 本篇的“媒体”表示图片、视频、音乐等网络信息传播文件形式，了解了这些媒体文件的本质就能更好地处理相关问题。
 
+摄影常识将在视频小节后介绍。
+
 ## 图片
 
-要了解一张图片，可以从这几点入手：像素、分辨率、格式
+要了解一张图片，可以从这几点入手：像素、分辨率、格式。
 
 ### 像素
 
@@ -146,7 +148,7 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
 
 位深度这个概念可能大多数人就没有了解过了。最直观的理解就是，图片的位深度越大，它所能显示的色彩范围就越广。
 
-我们经常在网上看到一些 GIF 动图，有些动图的颜色一看就觉得比较奇怪，和视频的颜色完全没法比，这就是因为 GIF 传统的编码器只支持 8 位色，俗称 256 色。
+位深度就是指一个像素用了多少位二进制来进行表示，具体的规定如下
 
 ![位深度](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/color_depth.png)
 
@@ -165,6 +167,7 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
 读者可以在自己电脑上随便点一张图看下属性，算出其像素数量，再用其位深度除以 `8` 算出每个像素需要多少字节数据来表示，最后乘起来看看结果和其实际体积相比如何。你会发现现在流行的图片格式无一例外体积都一定远远小于你算出来的数字，这说明很多图片格式并不是直接存储像素的，而是经过了算法的优化。
 
 #### JPEG
+   
    JPEG 格式是一种流行的有损压缩图片格式，其文件后缀为 `.jpg` 或 `.jpeg`。对于大多数图片，JPEG 都能有效地减少其体积，而人的肉眼几乎看不出太多变化 (视压缩程度而定)。
   
    比如我博客的夜间模式首页图，分辨率也不算很小，但是其体积仅为 `33KB`，这就是 JPEG 压缩的强大之处。
@@ -185,16 +188,19 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
    JPEG 的唯一缺点就是，它是有损压缩，正因如此，它是不支持透明像素 (Alpha 通道) 的，并且压缩程度过大就会产生明显的色块。放大我博客的夜间模式首页图可以发现，实际上它是很模糊的，有很多方形的色块。
 
 #### PNG
+   
    PNG 格式是一种常用的无损压缩格式，它能 `100%` 还原出原始图片，同时也能减小文件体积。它支持 32 位深度，也就是支持透明像素，现在大部分带透明像素的图片都是这种格式。
    
    对于细节比较统一的图片，比如随便截个白底黑字图，PNG 的图片体积也能压缩到很小，而如果用 PNG 去保存上面那张博客首页图，那么体积就会比 JPEG 大得多。这是因为 PNG 使用了 ZIP 格式压缩同款算法 Deflate 来压缩像素，这种算法使用字典来实现压缩，它将多次出现的同款长数据加入到字典中，然后就可以用标记来代替原数据了，像白底黑字图片中这种连续的白色像素非常多所以压缩效果比较好，而对于颜色细节都十分丰富的图片，这种算法节省的体积就十分有限了。
 
 #### GIF
-   一种常用的动图格式，和 JPEG 一样都是表情包的专用格式。GIF 实现动图的原理就是让很多张图片进行快速切换，达到一定速度人脑就会认为是连续的动态画面了。值得一提的是，GIF 也支持透明像素，经过处理的表情包看起来很有意思。
+   
+   一种常用的动图格式，和 JPEG 一样都是表情包的专用格式。GIF 实现动图的原理就是让很多张图片进行快速切换，达到一定速度人脑就会认为是连续的动态画面了。值得一提的是，GIF 支持 1 bit Alpha 通道，也就是支持全透明/不透明像素，经过处理的表情包看起来很有意思。
 
    由于 GIF 格式年代久远，其设计时采用了 8 位深度，也就是 256 色，所以其显示效果是很有限的。
 
 #### Webp
+   
    一种静态/动态图片格式，由谷歌公司开发，使用 VP8 (谷歌的视频编码器，YouTube 专用，后面会介绍)同款编码器算法对图片进行有损/无损压缩。
    
    正如其名字，它是专门设计用于 Web 浏览器上的网络图像格式，拥有高压缩比，且显示效果优于 JPEG，它可以在 Web 上完全代替所有图片格式，是未来的趋势。
@@ -204,6 +210,7 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
    ![Webp example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/webp_example.webp)
 
 #### SVG
+   
    SVG 是一种矢量格式，和传统图片位图不同，它不是保存像素，而是靠代码来实现绘制线条路径等，所以它不像普通图片那样放大就变糊，因为它是实时绘制的。既然它是实时绘制并且依靠代码，那么完全可以将它设计成支持动态变换——事实上也确实如此。SVG 和 Web 离不开关系，它可以和 Web 控件互动，实现精美的网页效果。
    
    下面是我用工具乱画的一个 SVG 矢量图以及网上找的一个动态 SVG 图，在 F12 中打开源文件可以看到路径代码。
@@ -213,7 +220,16 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
    ![SVG animation exmaple](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_animated_exmaple.svg)
 
 #### BMP
+   
    BMP 是由微软开发的一种图像格式，广泛应用于 Windows 系统中，支持 8~32 位色，几乎不压缩数据，也因此它的体积往往远大于其他格式。读者可以找张 BMP 图片用我本小节开头说的那个方法计算一下该图所有像素需要的字节表示量，你会发现结果差不多和 BMP 图片体积一样大。
+
+### 图像元数据 - Exif
+
+元数据 (Metadata) 是描述数据的数据，图片元数据是嵌入到图片文件中的一些信息，而 Exif 是相机记录拍摄日志的一种元数据。
+
+Exif 可以记录相机 (手机) 型号、光圈、快门时长、图片尺寸、拍摄日期、焦距、ISO (感光度)、拍摄地 GPS 坐标。
+
+现在的手机照相也会自动记录上述 Exif 信息，所以说千万不要在网络上上传手机拍摄的原图，否则可能直接被人通过 Exif 记录的 GPS 坐标定位。
 
 ### 图像处理工具
 
@@ -247,4 +263,186 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
 
 缺点：不支持透明像素、JPEG 压缩有点过分。带透明像素的 PNG 图片经过它处理后透明像素就没有了，会变成白色；PNG 的图片用它另存为 JPEG 后会有点糊，压缩调得比较狠。
 
-## 持续更新中(10.10)
+#### Webp tools
+
+此工具为 Linux 命令行工具，可以显示、创建静态 Webp 图片，使用 `sudo apt install webp` 即可安装。
+
+其中 `cwebp` 工具用于创建图片：
+
+```plaintext
+$ cwebp -longhelp
+Usage:
+ cwebp [-preset <...>] [options] in_file [-o out_file]
+
+If input size (-s) for an image is not specified, it is
+assumed to be a PNG, JPEG, TIFF or WebP file.
+Note: Animated PNG and WebP files are not supported.
+
+Options:
+  -h / -help ............. short help
+  -H / -longhelp ......... long help
+  -q <float> ............. quality factor (0:small..100:big), default=75
+  -alpha_q <int> ......... transparency-compression quality (0..100),
+                           default=100
+  -preset <string> ....... preset setting, one of:
+                            default, photo, picture,
+                            drawing, icon, text
+     -preset must come first, as it overwrites other parameters
+  -z <int> ............... activates lossless preset with given
+                           level in [0:fast, ..., 9:slowest]
+
+  -m <int> ............... compression method (0=fast, 6=slowest), default=4
+  -segments <int> ........ number of segments to use (1..4), default=4
+  -size <int> ............ target size (in bytes)
+  -psnr <float> .......... target PSNR (in dB. typically: 42)
+
+  -s <int> <int> ......... input size (width x height) for YUV
+  -sns <int> ............. spatial noise shaping (0:off, 100:max), default=50
+  -f <int> ............... filter strength (0=off..100), default=60
+  -sharpness <int> ....... filter sharpness (0:most .. 7:least sharp), default=0
+  -strong ................ use strong filter instead of simple (default)
+  -nostrong .............. use simple filter instead of strong
+  -sharp_yuv ............. use sharper (and slower) RGB->YUV conversion
+  -partition_limit <int> . limit quality to fit the 512k limit on
+                           the first partition (0=no degradation ... 100=full)
+  -pass <int> ............ analysis pass number (1..10)
+  -qrange <min> <max> .... specifies the permissible quality range
+                           (default: 0 100)
+  -crop <x> <y> <w> <h> .. crop picture with the given rectangle
+  -resize <w> <h> ........ resize picture (*after* any cropping)
+  -mt .................... use multi-threading if available
+  -low_memory ............ reduce memory usage (slower encoding)
+  -map <int> ............. print map of extra info
+  -print_psnr ............ prints averaged PSNR distortion
+  -print_ssim ............ prints averaged SSIM distortion
+  -print_lsim ............ prints local-similarity distortion
+  -d <file.pgm> .......... dump the compressed output (PGM file)
+  -alpha_method <int> .... transparency-compression method (0..1), default=1
+  -alpha_filter <string> . predictive filtering for alpha plane,
+                           one of: none, fast (default) or best
+  -exact ................. preserve RGB values in transparent area, default=off
+  -blend_alpha <hex> ..... blend colors against background color
+                           expressed as RGB values written in
+                           hexadecimal, e.g. 0xc0e0d0 for red=0xc0
+                           green=0xe0 and blue=0xd0
+  -noalpha ............... discard any transparency information
+  -lossless .............. encode image losslessly, default=off
+  -near_lossless <int> ... use near-lossless image preprocessing
+                           (0..100=off), default=100
+  -hint <string> ......... specify image characteristics hint,
+                           one of: photo, picture or graph
+
+  -metadata <string> ..... comma separated list of metadata to
+                           copy from the input to the output if present.
+                           Valid values: all, none (default), exif, icc, xmp
+
+  -short ................. condense printed message
+  -quiet ................. don't print anything
+  -version ............... print version number and exit
+  -noasm ................. disable all assembly optimizations
+  -v ..................... verbose, e.g. print encoding/decoding times
+  -progress .............. report encoding progress
+
+Experimental Options:
+  -jpeg_like ............. roughly match expected JPEG size
+  -af .................... auto-adjust filter strength
+  -pre <int> ............. pre-processing filter
+
+Supported input formats:
+  WebP, JPEG, PNG, PNM (PGM, PPM, PAM), TIFF
+```
+
+从 PNG 图像创建无损 Webp 图像：
+
+```bash
+cwebp -lossless -z 9 -m 6 input.png -o output.webp
+# Saving file 'modem_pc.png.webp'
+# File:      modem_pc.png
+# Dimension: 1160 x 747
+# Output:    506272 bytes (4.67 bpp)
+# Lossless-ARGB compressed size: 506272 bytes
+#   * Header size: 5457 bytes, image data size: 500790
+#   * Lossless features used: PREDICTION CROSS-COLOR-TRANSFORM SUBTRACT-GREEN
+#   * Precision Bits: histogram=5 transform=4 cache=10
+
+# -lossless 无损压缩
+# -z 9 最慢编码模式，效果最佳
+# -m 6 压缩模式最慢，压缩率最高
+# -o 输出文件名
+```
+
+创建有损压缩 Webp 文件：
+
+```bash
+cwebp -m 6 input.png -o output.webp
+# Saving file 'output.webp'
+# File:      input.png
+# Dimension: 1160 x 747
+# Output:    41678 bytes Y-U-V-All-PSNR 42.63 49.93 49.90   44.01 dB
+#            (0.38 bpp)
+# block count:  intra4:       1481  (43.17%)
+#               intra16:      1950  (56.83%)
+#               skipped:      1261  (36.75%)
+# bytes used:  header:            271  (0.7%)
+#              mode-partition:   6037  (14.5%)
+#  Residuals bytes  |segment 1|segment 2|segment 3|segment 4|  total
+#     macroblocks:  |       2%|       4%|      29%|      65%|    3431
+#       quantizer:  |      36 |      34 |      29 |      23 |
+#    filter level:  |      11 |       7 |       5 |      15 |
+```
+
+命令行工具可能使用不太方便，可以使用在线转化工具。
+
+## 视频
+
+在现代数字媒体中，编解码器和视频格式 (封装容器) 扮演着至关重要的角色。编解码器 (Codec) 是用于压缩和解压缩数字视频的技术，它决定了视频究竟是以何种方式进行编码存储，从而决定了其质量和大小。而视频格式则是用于存储视频、音频和其他数据的文件格式，如常见的 `MP4、AVI、MKV` 等。
+
+几十年来，视频编码技术不断迭代，开发人员一直在努力通过更低的[码率](https://blog.csdn.net/qq_22833925/article/details/138151822)实现相同的显示质量。这意味着视频文件变得越来越小，从而节省了在线观看视频所需的带宽。节省带宽的原因显而易见：带宽费用较高，视频网站需要缩减成本，这也是无奈之举。
+
+接下来我将从视频格式开始介绍各种常见的视频封装容器，顺便介绍常见的编解码器。最后再介绍硬解软解以及常用的视频处理工具。
+
+**注意，笔者考证能力有限，以下内容全凭自身经验 + 简单搜索参考，若读者想进一步研究建议自行寻找更专业的资料。**
+
+### 封装容器
+
+普通用户一直存在一个常见的误区，那就是以为视频文件的后缀名就是视频的格式，但事实并不是那样的。
+
+**一个文件的后缀和这个文件究竟是什么内容，并不是对应关系**，因为后缀属于文件名的一部分，而文件名并不属于文件数据。Windows 系统一直靠后缀名来区分文件，而 Linux 系统是靠文件头的数据标识来区分的。我随便找个标准 `.mp4` 文件把后缀改了，那么它就不是 MP4 文件了吗？反过来说我随便找个 PDF 文件改成 `.docx`，难道这个文件就转化成了 Word 文档？显然这是不正确的。
+
+上述例子其实和“视频文件的后缀名不代表视频的格式”想表达的意思有点不一样，对于视频文件来说容器 (格式) 是次要的，编码器才是主要的。分析一个视频文件可以先从后缀简单辨认一下它的类型，然后再进一步查看其编码数据。
+
+容器里包含了视频播放所需要的数据，包括视频流 (Video Stream)、音频流 (Audio Stream)、元数据 (Metadata)，前两个也可以称为XX轨道。当然，有的格式设计时就只支持他们自己那一套编解码方案，这与我上部分所述并不冲突，因为有其他格式可以支持多种编码器。
+
+- MP4
+
+   `.mp4` 几乎是最出名最常用的视频格式了，MPEG-4 标准制定于 1998 年，其中 H.264 编码器是 MPEG-4 标准的第 10 部分，称为 `Advanced Video Coding (H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10)`，首发于 2004 年。
+
+   在当今这个时代 H.264 已经算是视频编码器的最低标准了，它的压缩率中规中矩，几乎被所有视频硬件设备所支持，正因如此 H.264 可以称为是兼容性最高的一种编码器。20 多年以来，虽然不断有新的编码器问世，但 H.264 仍旧在被大量使用，笔者猜测原因可能有如下几点：
+
+   1. 无可挑剔的兼容性
+      
+      从软件层看，几乎所有浏览器/播放器/应用程序都支持解析 H.264 格式的视频；上面也提到，几乎任何设备都支持 H.264 硬解 (什么是硬解软解，后面再介绍)，就算不能硬解，软解的算力也完全够用，因为其解码开销很少。
+
+   2. 编码开销相对较少
+
+      H.264 标准制定已有 20 余年，这期间又诞生了各种各样的编码器，压缩效果比 H.264 强。但是强大的压缩效果是更加复杂的压缩算法换来的，这样做的结果就是编码开销普遍比 H.264 高出数倍。H.264 可能 5 分钟编码完一个视频，而其他编码器可能要花费 15 分钟甚至更多时间来编码，并且 CPU/GPU 占用还比 H.264 高出不少，这一点无论是对于个人还是企业都是一个问题，算力始终是有限的，算力不够就只能花钱来凑。
+
+      需要接触视频编码的群体一般是：
+      
+      1. 视频网站/IM/社交媒体平台：二压用户上传的视频，并为观众提供多种清晰度选择，并且保证最大兼容性。
+      
+      2. 个人视频制作者：可能以多种媒介发布视频，自己压制视频以获得最佳效果。以前 B 站曾有过 UP 主自己压制到一定码率以下就能防止被二压的操作，可见个人创作者掌握这些技能非常有用。
+      
+      3. 字幕组：10 年前左右是字幕组的黄金时代，那时候 H.265 还没有开始推广，各路大神把 H.264 研究了个透，只求在合适的清晰度下实现最佳的压制效果。
+
+      4. 摄影设备：如手机，其算力有限，实时编码使用 H.264 开销最低，兼容性最好，并且能提供一定程度的压缩。虽然 H.265 的开销也足以支持实时编码，但 H.265 的兼容性极差，一直到最近几年才慢慢普及。
+
+- MKV (Matroska Video File)
+
+   MKV 几乎是一种万能的封装格式，因为它的支持性非常好，并且能够封装多个轨道流。常见的使用场景如多语言配音的电影可以封装多音轨，当然也可以多视频轨。
+
+   说到多语言就不得不提到字幕，目前的字幕实现方式无非两种，一种是内嵌字幕，也就是直接把字幕硬编码进视频中成为画面的一部分；另一种是外挂字幕，播放器自己实现一个字幕叠加显示在画面中，用户还可以自己调整字体大小、显示位置等参数，相比内嵌字幕更加灵活。
+
+   MKV 也支持封装字幕流实现外挂字幕，这样字幕组就不再需要内嵌字幕，相比之下省去了一步。
+
+## 持续更新中(10.12)
