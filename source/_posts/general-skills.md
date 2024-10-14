@@ -449,11 +449,11 @@ cwebp -m 6 input.png -o output.webp
 
       ![MOV example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/mov_example.png)
 
-   - FLV (Flash Video)
+- FLV (Flash Video)
 
-      一种网络流媒体专用格式，曾经被 B 站、优酷、爱奇艺等众多网站所使用。它之所以叫 Flash Video，是因为它是依赖 Flash (没错就是当年那个 Flash 插件，现在已经退出历史舞台) 的一种格式。
+   一种网络流媒体专用格式，曾经被 B 站、优酷、爱奇艺等众多网站所使用。它之所以叫 Flash Video，是因为它是依赖 Flash (没错就是当年那个 Flash 插件，现在已经退出历史舞台) 的一种格式。
       
-      当年 Flash 是一项热门技术，想要在网页上实现精美的播放器控件，Flash 无疑是最好的选择。`.swf` 是 Flash 的动画格式，而若是将视频直接导入 `.swf`，体积又过于庞大，于是 `.flv` 应运而生。但是 Flash 技术已经被人批判已久，因为它存在非常多的安全漏洞，Adobe 修洞修得不想修了宣布要停止支持 Flash。后来 Google 直接把 Chrome 和 Flash 切割了不让用了，于是各大网站都开始“转型”，FLV 也就逐渐淡出历史舞台。
+   当年 Flash 是一项热门技术，想要在网页上实现精美的播放器控件，Flash 无疑是最好的选择。`.swf` 是 Flash 的动画格式，而若是将视频直接导入 `.swf`，体积又过于庞大，于是 `.flv` 应运而生。但是 Flash 技术被人批判已久，因为它存在非常多的安全漏洞，Adobe 修洞修得不想修了宣布要停止支持 Flash。后来 Google 直接把 Chrome 和 Flash 切割了不让用了，于是各大网站都开始“转型”，FLV 也就逐渐淡出历史舞台。
 
 - 待补充更多格式
 
