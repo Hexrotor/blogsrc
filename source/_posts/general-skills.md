@@ -11,6 +11,8 @@ sticky: 999
 
 最近决定把自己会的计算机操作技巧记录下来，如果文章中有任何错误，请告知我。
 
+<h4>!!! 本文章是一个知识集合，我会持续扩充本文章的内容，所以本文章会变得越来越长。<br>若读者只想要了解某一方面的知识点，请善用目录和搜索功能 !!!</h4>
+
 <h1>本文章正在施工中</h1>
 
 # 搜索引擎篇
@@ -170,60 +172,82 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
 
 #### JPEG
    
-   JPEG 格式是一种流行的有损压缩图片格式，其文件后缀为 `.jpg` 或 `.jpeg`。对于大多数图片，JPEG 都能有效地减少其体积，而人的肉眼几乎看不出太多变化 (视压缩程度而定)。
-  
-   比如我博客的夜间模式首页图，分辨率也不算很小，但是其体积仅为 `33KB`，这就是 JPEG 压缩的强大之处。
+JPEG 格式是一种流行的有损压缩图片格式，其文件后缀为 `.jpg` 或 `.jpeg`。对于大多数图片，JPEG 都能有效地减少其体积，而人的肉眼几乎看不出太多变化 (视压缩程度而定)。
 
-   ![girl_dark](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/girl_dark.jpg)
+比如我博客的夜间模式首页图，分辨率也不算很小，但是其体积仅为 `33KB`，这就是 JPEG 压缩的强大之处。
 
-   JPEG 拥有四种压缩模式，本文稍微提一下前两种，分别是 **基于DCT的连续模式 Baseline JPEG** 与 **基于DCT的渐进式模式 Progressive JPEG**。
+![girl_dark](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/girl_dark.jpg)
 
-   - 连续模式 Baseline JPEG
-      这种模式是基本 JPEG 压缩模式，一次将图像由从左到右、由上到下进行处理，大部分软件保存 JPEG 默认都是这个模式。要直观地体验这个模式，可以在新标签页打开[上面那张图片](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/girl_dark.jpg)，再打开浏览器 F12 找到 Network 网络选项，选择模拟 3G 网络，勾选禁用缓存，然后刷新页面，注意观察图像的渲染状态。
-   - 渐进式模式 Progressive JPEG
-      这种 JPEG 平常见得比较少，它在加载时可以先加载出一个大致的预览图，然后再慢慢变清晰，在网络传输较慢的场景可以为用户提供图像大致预览。
+JPEG 拥有四种压缩模式，本文稍微提一下前两种，分别是 **基于DCT的连续模式 Baseline JPEG** 与 **基于DCT的渐进式模式 Progressive JPEG**。
 
-      我以前有个索尼的卡片式相机拍摄的照片就是这种 JPEG，因为相机的储存卡读取速度有限，浏览相册时并不能快速地加载整个图像，而这种渐进式 JPEG 又很适合快速翻阅照片预览的情况，若是使用普通 JPEG，从上到下加载的图片根本就没办法快速翻阅预览。
+- 连续模式 Baseline JPEG
+   这种模式是基本 JPEG 压缩模式，一次将图像由从左到右、由上到下进行处理，大部分软件保存 JPEG 默认都是这个模式。要直观地体验这个模式，可以在新标签页打开[上面那张图片](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/girl_dark.jpg)，再打开浏览器 F12 找到 Network 网络选项，选择模拟 3G 网络，勾选禁用缓存，然后刷新页面，注意观察图像的渲染状态。
+- 渐进式模式 Progressive JPEG
+   这种 JPEG 平常见得比较少，它在加载时可以先加载出一个大致的预览图，然后再慢慢变清晰，在网络传输较慢的场景可以为用户提供图像大致预览。
 
-      [这张图片](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/jpeg_prog_example.jpg)是一个渐进式 JPEG，读者可以用上述方法感受一下加载过程。
+   我以前有个索尼的卡片式相机拍摄的照片就是这种 JPEG，因为相机的储存卡读取速度有限，浏览相册时并不能快速地加载整个图像，而这种渐进式 JPEG 又很适合快速翻阅照片预览的情况，若是使用普通 JPEG，从上到下加载的图片根本就没办法快速翻阅预览。
 
-   JPEG 的唯一缺点就是，它是有损压缩，正因如此，它是不支持透明像素 (Alpha 通道) 的，并且压缩程度过大就会产生明显的色块。放大我博客的夜间模式首页图可以发现，实际上它是很模糊的，有很多方形的色块。
+   [这张图片](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/jpeg_prog_example.jpg)是一个渐进式 JPEG，读者可以用上述方法感受一下加载过程。
+
+JPEG 的唯一缺点就是，它是有损压缩，正因如此，它是不支持透明像素 (Alpha 通道) 的，并且压缩程度过大就会产生明显的色块。放大我博客的夜间模式首页图可以发现，实际上它是很模糊的，有很多方形的色块。
 
 #### PNG
-   
-   PNG 格式是一种常用的无损压缩格式，它能 `100%` 还原出原始图片，同时也能减小文件体积。它支持 32 位深度，也就是支持透明像素，现在大部分带透明像素的图片都是这种格式。
-   
-   对于细节比较统一的图片，比如随便截个白底黑字图，PNG 的图片体积也能压缩到很小，而如果用 PNG 去保存上面那张博客首页图，那么体积就会比 JPEG 大得多。这是因为 PNG 使用了 ZIP 格式压缩同款算法 Deflate 来压缩像素，这种算法使用字典来实现压缩，它将多次出现的同款长数据加入到字典中，然后就可以用标记来代替原数据了，像白底黑字图片中这种连续的白色像素非常多所以压缩效果比较好，而对于颜色细节都十分丰富的图片，这种算法节省的体积就十分有限了。
+
+PNG 格式是一种常用的无损压缩格式，它能 `100%` 还原出原始图片，同时也能减小文件体积。它支持 32 位深度，也就是支持透明像素，现在大部分带透明像素的图片都是这种格式。
+
+对于细节比较统一的图片，比如随便截个白底黑字图，PNG 的图片体积也能压缩到很小，而如果用 PNG 去保存上面那张博客首页图，那么体积就会比 JPEG 大得多。这是因为 PNG 使用了 ZIP 格式压缩同款算法 Deflate 来压缩像素，这种算法使用字典来实现压缩，它将多次出现的同款长数据加入到字典中，然后就可以用标记来代替原数据了，像白底黑字图片中这种连续的白色像素非常多所以压缩效果比较好，而对于颜色细节都十分丰富的图片，这种算法节省的体积就十分有限了。
 
 #### GIF
    
-   一种常用的动图格式，和 JPEG 一样都是表情包的专用格式。GIF 实现动图的原理就是让很多张图片进行快速切换，达到一定速度人脑就会认为是连续的动态画面了。值得一提的是，GIF 支持 1 bit Alpha 通道，也就是支持全透明/不透明像素，经过处理的表情包看起来很有意思。
+一种常用的动图格式，和 JPEG 一样都是表情包的专用格式。GIF 实现动图的原理就是让很多张图片进行快速切换，达到一定速度人脑就会认为是连续的动态画面了。值得一提的是，GIF 支持 1 bit Alpha 通道，也就是支持全透明/不透明像素，经过处理的表情包看起来很有意思。
 
-   由于 GIF 格式年代久远，其设计时采用了 8 位深度，也就是 256 色，所以其显示效果是很有限的。
+由于 GIF 格式年代久远，其设计时采用了 8 位深度，也就是 256 色，所以其显示效果是很有限的。
 
 #### Webp
    
-   一种静态/动态图片格式，由谷歌公司开发，使用 VP8 (谷歌的视频编码器，YouTube 专用，后面会介绍)同款编码器算法对图片进行有损/无损压缩。
-   
-   正如其名字，它是专门设计用于 Web 浏览器上的网络图像格式，拥有高压缩比，且显示效果优于 JPEG，它可以在 Web 上完全代替所有图片格式，是未来的趋势。
+一种静态/动态图片格式，由谷歌公司开发，使用 VP8 (谷歌的视频编码器，YouTube 专用，后面会介绍) 同款编码器算法对图片进行有损/无损压缩。
 
-   下面是一张无损动态 Webp 图片，体积仅为 `913KB`，而 GIF 要做到同等效果至少需要 `1.2MB`
+正如其名字，它是专门设计用于 Web 浏览器上的网络图像格式，拥有高压缩比，且显示效果优于 JPEG，它可以在 Web 上完全代替所有图片格式。
 
-   ![Webp example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/webp_example.webp)
+下面是一张无损动态 Webp 图片，体积仅为 `842KB`，而 GIF 要做到同等效果至少需要 `1.2MB`
+
+![Webp example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/webp_example.webp)
+
+#### AVIF
+
+谷歌公司开发的最新图片格式，基于 AV1 编码器，而 AV1 是由 VP9 改进而来，该格式支持静态/动态图片，并且还支持 HDR 功能。
+
+这是一个非常恐怖的格式，它不仅继承了 Webp 的优点，还比它更强。请看如下动图：
+
+![Avif example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/avif_example.avif)
+
+这是一个仅为 127KB 的有损 avif 动图，但是就画面上来看，它和上面的无损 Webp 完全一致。
+
+该图片由我使用 FFmpeg 默认模式创建，若使用默认模式创建同款有损 Webp 动图，大小约为 700KB，并且画面出现明显色块：
+
+![Webp lossy exmaple](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/webp_lossy_example.webp)
+
+若要说该格式有什么缺点，那就是它的兼容性较差与编解码开销较大。
+
+兼容性差是因为还没有推广开，软件适配得少，不过目前 Chrome 已经支持这种格式，并且其为开源，想适配很容易。
+
+而编解码问题是 AV1 的一大痛点，AV1 为了实现优秀的压缩性能使用了非常复杂的算法，编码过程非常非常慢，但是解码过程还好，但是与其他格式相比之下也会增加耗电。
+
+若想了解该格式的更多内容，可以访问这位哥的博客：[https://blog.hentioe.dev/posts/getting-started-with-avif-format.html](https://blog.hentioe.dev/posts/getting-started-with-avif-format.html)
 
 #### SVG
    
-   SVG 是一种矢量格式，和传统图片位图不同，它不是保存像素，而是靠代码来实现绘制线条路径等，所以它不像普通图片那样放大就变糊，因为它是实时绘制的。既然它是实时绘制并且依靠代码，那么完全可以将它设计成支持动态变换——事实上也确实如此。SVG 和 Web 离不开关系，它可以和 Web 控件互动，实现精美的网页效果。
-   
-   下面是我用工具乱画的一个 SVG 矢量图以及网上找的一个动态 SVG 图，在 F12 中打开源文件可以看到路径代码。
-   
-   ![SVG example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_example.svg)
+SVG 是一种矢量格式，和传统图片位图不同，它不是保存像素，而是靠代码来实现绘制线条路径等，所以它不像普通图片那样放大就变糊，因为它是实时绘制的。既然它是实时绘制并且依靠代码，那么完全可以将它设计成支持动态变换——事实上也确实如此。SVG 和 Web 离不开关系，它可以和 Web 控件互动，实现精美的网页效果。
 
-   ![SVG animation exmaple](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_animated_exmaple.svg)
+下面是我用工具乱画的一个 SVG 矢量图以及网上找的一个动态 SVG 图，在 F12 中打开源文件可以看到路径代码。
+
+![SVG example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_example.svg)
+
+![SVG animation exmaple](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_animated_exmaple.svg)
 
 #### BMP
    
-   BMP 是由微软开发的一种图像格式，广泛应用于 Windows 系统中，支持 8~32 位色，几乎不压缩数据，也因此它的体积往往远大于其他格式。读者可以找张 BMP 图片用我本小节开头说的那个方法计算一下该图所有像素需要的字节表示量，你会发现结果差不多和 BMP 图片体积一样大。
+BMP 是由微软开发的一种图像格式，广泛应用于 Windows 系统中，支持 8~32 位色，几乎不压缩数据，也因此它的体积往往远大于其他格式。读者可以找张 BMP 图片用我本小节开头说的那个方法计算一下该图所有像素需要的字节表示量，你会发现结果差不多和 BMP 图片体积一样大。
 
 ### 图像元数据 - Exif
 
@@ -395,6 +419,10 @@ cwebp -m 6 input.png -o output.webp
 
 命令行工具可能使用不太方便，可以使用在线转化工具。
 
+#### ImageMagick
+
+待填坑
+
 ## 视频
 
 在现代数字媒体中，编解码器和视频格式 (封装容器) 扮演着至关重要的角色。编解码器 (Codec) 是用于压缩和解压缩数字视频的技术，它决定了视频究竟是以何种方式进行编码存储，从而决定了其质量和大小。而视频格式则是用于存储视频、音频和其他数据的文件格式，如常见的 `MP4、AVI、MKV` 等。
@@ -521,4 +549,10 @@ VVC 到目前为止似乎还没有正式发布，并且由于它的前辈 HEVC �
 
 #### AV1
 
-## 持续更新中(10.16)
+**以下内容部分摘自 [Wikipedia](https://zh.wikipedia.org/wiki/AOMedia_Video_1)**
+
+AOMedia Video 1 (AV1) 是一个开放、免专利的影片编码格式，为网络流传输而设计。它由开放媒体联盟 (AOMedia) 开发，目标是取代其前身 VP9。
+
+**本节内容较多，待补充**
+
+## 持续更新中(10.18)
