@@ -11,11 +11,11 @@ sticky: 999
 
 最近决定把自己会的计算机操作技巧记录下来，如果文章中有任何错误，请告知我。
 
-#### 本文章是一个知识集合，我会持续扩充本文章的内容，所以本文章会变得越来越长
+**本文章是一个知识集合，我会持续扩充本文章的内容，所以本文章会变得越来越长**
 
-#### 若读者只想要了解某一方面的知识点，请善用目录和搜索功能！
+**若读者只想要了解某一方面的知识点，请善用目录和搜索功能！**
 
-目录功能需要在 PC 端使用
+**目录功能需要在 PC 端使用**
 
 # 本文章正在施工中
 
@@ -229,15 +229,15 @@ PNG 格式是一种常用的无损压缩格式，它能 `100%` 还原出原始�
 
 这是一个仅为 127KB 的有损 avif 动图，但是就画面上来看，它和上面的无损 Webp 完全一致。
 
-该图片由我使用 FFmpeg 默认模式创建，若使用默认模式创建同款有损 Webp 动图，大小约为 700KB，并且画面出现明显色块：
+该图片由我使用 FFmpeg 默认模式创建，若使用默认模式 (质量 75) 创建同款**有损** Webp 动图，大小约为 700KB，并且画面出现明显色块：
 
 ![Webp lossy exmaple](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/webp_lossy_example.webp)
 
-若要说该格式有什么缺点，那就是它的兼容性较差与编解码开销较大。
+若要说该格式有什么缺点，那就是它的兼容性较差、编解码开销较大。
 
-兼容性差是因为还没有推广开，软件适配得少，不过目前 Chrome 已经支持这种格式，并且其为开源，想适配很容易。
+兼容性差是因为还没有推广开，软件适配得少，不过目前 Chrome 已经支持这种格式，并且其为开源，适配应当很容易。
 
-而编解码问题是 AV1 的一大痛点，AV1 为了实现优秀的压缩性能使用了非常复杂的算法，编码过程非常非常慢，但是解码过程还好，但是与其他格式相比之下也会增加耗电。
+而编解码问题是 AV1 的一大痛点，AV1 为了实现优秀的压缩性能使用了非常复杂的算法，编码过程非常非常慢。解码过程还好，但是与其他格式相比之下也消耗更多客户端计算资源并增加耗电，这对于移动端可能是一个问题。
 
 若想了解该格式的更多内容，可以访问这位哥的博客：[https://blog.hentioe.dev/posts/getting-started-with-avif-format.html](https://blog.hentioe.dev/posts/getting-started-with-avif-format.html)
 
@@ -299,7 +299,9 @@ Exif 可以记录相机 (手机) 型号、光圈、快门时长、图片尺寸�
 
 此工具为 Linux 命令行工具，可以显示、创建静态 Webp 图片，使用 `sudo apt install webp` 即可安装。
 
-其中 `cwebp` 工具用于创建图片：
+<details>
+
+<summary>其中 `cwebp` 工具用于创建图片</summary>
 
 ```plaintext
 $ cwebp -longhelp
@@ -384,7 +386,9 @@ Supported input formats:
   WebP, JPEG, PNG, PNM (PGM, PPM, PAM), TIFF
 ```
 
-从 PNG 图像创建无损 Webp 图像：
+</details>
+
+从 PNG 图像创建无损 Webp 图像
 
 ```bash
 cwebp -lossless -z 9 -m 6 input.png -o output.webp
