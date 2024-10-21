@@ -11,17 +11,17 @@ excerpt: "只做了这道题"
 
 首先运行程序，会进入一个交互界面，然后提示可以进入 server 模式，并且 `run` 之后打印出来一串 opcode
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_run.jpg)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_run.jpg.avif)
 
 nc 连 server，server 提示连接成功，`help` 查看指令
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_server_help.jpg)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_server_help.jpg.avif)
 
 随后尝试运行这些指令，server 这边直接卡住了，但是 nc 这边出现了乱码
 
 如图是运行 pwd 出现的乱码：
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_pwd.jpg)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_pwd.jpg.avif)
 
 由于看不出来是什么，所以上 pwntools 提一下数据得到
 
@@ -45,21 +45,21 @@ IDA 打开能直接找到 `main` 函数 `seccomp_shell::main::hef7e76ec97275895(
 
 事实证明也确实有：
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_func_shell.jpg)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_func_shell.jpg.avif)
 
 上图这种 `switch` 字符串的比较方式不知道是 Rust 编译器干的还是出题人故意这样写的，总之我看着值有点像 ascii 范围就 R 了一下，结果确实是字符。应该是根据用户输入进入相应的函数，那么进 `seccomp_shell::shell::prompt::h76cecfe7bd3bdf50(v33)` 看看吧
 
 然后就发现了刚刚打印出来的字符串，看来 server 之后进入的交互就是这个函数负责的：
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_fun_shell_p.jpg)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_fun_shell_p.jpg.avif)
 
 然后继续往下看，发现了爆点
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_func_shell_flag.jpg)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_func_shell_flag.jpg.avif)
 
 上图中出现了 `flag` 命令，我随即启动程序测试
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_input_flag.jpg)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_input_flag.jpg.avif)
 
 如图直接输 `flag` 会提示 Incorrect ，随后我在后面加参数运行也不会有报错，猜测就是把 `flag` 后面的参数拿去验证了。先进 `seccomp_shell::shell::verify::h898bf5fa26dafbab(v154, v175[3], v175[5])` 函数看看
 
@@ -174,7 +174,7 @@ def reverse_order(data:list, table: list):
 
 ### 程序如何比较
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_func_verify_1.jpg)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_func_verify_1.jpg.avif)
 
 如图是 256 次循环后的开头代码，这次 `memcpy` 加载了一块 255 字节的数据到堆中，但不是 `dest`。经过查看，这个数据又是 opcode
 
@@ -186,7 +186,7 @@ def reverse_order(data:list, table: list):
 
 然后找到了这个函数
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_func_verify_2.jpg)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/blade_func_verify_2.jpg.avif)
 
 我一开始以为这个就是比较函数，但是仔细看发现根本没有比较的操作，而是又是在对 opcode 进行修改操作，并且将 opcode 数据发送到 nc 端，与之前那个 `if` 里的代码行为一致，应该是编译优化导致的。
 

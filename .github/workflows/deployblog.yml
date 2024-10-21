@@ -34,7 +34,7 @@ jobs:
         env:
           GITALK_SECRET: ${{ secrets.GITALK_SECRET }}
         run: |
-          sudo apt update && sudo apt install jpegoptim -y
+          sudo apt update && sudo apt install python3 ffmpeg -y
           git clone --depth=1 https://github.com/Hexrotor/blogsrc
 
           cd blogsrc
@@ -42,12 +42,14 @@ jobs:
           cp -rf post_imgs/* themes/redefine/source/images/post_imgs
           
           # replace images links with jsdelivr cdn
-          cat replace.sh|bash
+          # cat replace.sh|bash
+          python3 replace.py
 
           chmod 755 ./node_modules/.bin/hexo
           ./node_modules/.bin/hexo clean
           ./node_modules/.bin/hexo g
-          find ./public/images/post_imgs/ -not -iname "*_raw.jpg" -not -iname "*_raw.jpeg" -iname "*.jpg" -o -iname "*.jpeg" | xargs jpegoptim -m 80
+          # find ./public/images/post_imgs/ -not -iname "*_raw.jpg" -not -iname "*_raw.jpeg" -iname "*.jpg" -o -iname "*.jpeg" | xargs jpegoptim -m 80
+          python3 compress_img.py
           
           echo "Use static css file"
           cp -f style.css ./public/css/style.css

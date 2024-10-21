@@ -53,7 +53,7 @@ sticky: 999
 
 以上技巧以及一些未列出的技巧都可以在 Google 的高级搜索中找到
 
-![高级搜索](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/advantage_search.png)
+![高级搜索](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/advantage_search.png.avif)
 
 ## 图片搜索引擎
 
@@ -92,7 +92,7 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
 - [MioBT www.miobt.com](https://www.miobt.com/) 等镜像站
   国内 BT 发布网站，他们搞了个联盟，导致有长得几乎一模一样的镜像站，主站进去有个人机校验，所以我平时喜欢用镜像站 [漫猫 comicat.org](https://comicat.org/)
 
-![漫猫](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/comicat.png)
+![漫猫](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/comicat.png.avif)
 
 不仅是动漫，国内还有很多爱好者喜欢去 PT 站点下载各种资源，尤其是电影原盘爱好者。但是本文章不会介绍任何 PT 站点，下面介绍一些电影相关站点。
 
@@ -118,15 +118,15 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
 
 如下图，在输入框中输入域名 `mikufans.cn` (B 站早期) 即可搜索到诸多快照点，其中有 2009 年的快照。
 
-![Search](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/wayback_searchExample.png)
+![Search](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/wayback_searchExample.png.avif)
 
 点开最早时间为 July 14, 2009 20:20:42 的快照，就能看到早期 B 站的网页大致内容。由于当时 B 站不允许抓取 CSS 样式表，所以快照的排版效果不太好，但是依旧能看到视频标题等诸多内容。
 
-![mikufans.cn](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/wayback_mikufans.png)
+![mikufans.cn](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/wayback_mikufans.png.avif)
 
 虽然上述例子中快照没有图片，但实际上是会抓取图片的，将域名换成 `bilibili.us` 重新找一个快照：
 
-![bilibili.us](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/wayback_bilibili.jpg)
+![bilibili.us](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/wayback_bilibili.jpg.avif)
 
 虽然能保存图片快照，但并不是所有图片都可以，有些图片会失效，可能是外链导致的。
 
@@ -160,7 +160,7 @@ BT 的时代几乎已经过去，但很多使用场景仍然只有它能胜任�
 
 位深度就是指一个像素用了多少位二进制来进行表示，具体的规定如下
 
-![位深度](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/color_depth.png)
+![位深度](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/color_depth.png.avif)
 
 比如一张没有透明像素的 PNG 图片可以以 24 位深度进行编码保存，若给它增加了透明像素 (增加 Alpha 通道)，它就必须以 32 位深度进行保存。
 
@@ -182,7 +182,7 @@ JPEG 格式是一种流行的有损压缩图片格式，其文件后缀为 `.jpg
 
 比如我博客的夜间模式首页图，分辨率也不算很小，但是其体积仅为 `33KB`，这就是 JPEG 压缩的强大之处。
 
-![girl_dark](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/girl_dark.jpg)
+![girl_dark](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/girl_dark.jpg.avif)
 
 JPEG 拥有四种压缩模式，本文稍微提一下前两种，分别是 **基于DCT的连续模式 Baseline JPEG** 与 **基于DCT的渐进式模式 Progressive JPEG**。
 
@@ -193,7 +193,7 @@ JPEG 拥有四种压缩模式，本文稍微提一下前两种，分别是 **基
 
    我以前有个索尼的卡片式相机拍摄的照片就是这种 JPEG，因为相机的储存卡读取速度有限，浏览相册时并不能快速地加载整个图像，而这种渐进式 JPEG 又很适合快速翻阅照片预览的情况，若是使用普通 JPEG，从上到下加载的图片根本就没办法快速翻阅预览。
 
-   [这张图片](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/jpeg_prog_example.jpg)是一个渐进式 JPEG，读者可以用上述方法感受一下加载过程。
+   [这张图片](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/jpeg_prog_example_raw.jpg)是一个渐进式 JPEG，读者可以用上述方法感受一下加载过程。
 
 JPEG 的唯一缺点就是，它是有损压缩，正因如此，它是不支持透明像素 (Alpha 通道) 的，并且压缩程度过大就会产生明显的色块。放大我博客的夜间模式首页图可以发现，实际上它是很模糊的，有很多方形的色块。
 
@@ -217,7 +217,7 @@ PNG 格式是一种常用的无损压缩格式，它能 `100%` 还原出原始�
 
 下面是一张无损动态 Webp 图片，体积仅为 `842KB`，而 GIF 要做到同等效果至少需要 `1.2MB`
 
-![Webp example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/webp_example.webp)
+![Webp example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/webp_example.webp.avif)
 
 #### AVIF
 
@@ -231,7 +231,7 @@ PNG 格式是一种常用的无损压缩格式，它能 `100%` 还原出原始�
 
 该图片由我使用 FFmpeg 默认模式创建，若使用默认模式 (质量 75) 创建同款**有损** Webp 动图，大小约为 700KB，并且画面出现明显色块：
 
-![Webp lossy exmaple](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/webp_lossy_example.webp)
+![Webp lossy exmaple](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/webp_lossy_example.webp.avif)
 
 若要说该格式有什么缺点，那就是它的兼容性较差、编解码开销较大。
 
@@ -247,9 +247,9 @@ SVG 是一种矢量格式，和传统图片位图不同，它不是保存像素�
 
 下面是我用工具乱画的一个 SVG 矢量图以及网上找的一个动态 SVG 图，在 F12 中打开源文件可以看到路径代码。
 
-![SVG example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_example.svg)
+![SVG example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_example.svg.avif)
 
-![SVG animation exmaple](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_animated_exmaple.svg)
+![SVG animation exmaple](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_animated_exmaple.svg.avif)
 
 #### BMP
    
@@ -285,7 +285,7 @@ Exif 可以记录相机 (手机) 型号、光圈、快门时长、图片尺寸�
 
 它提供了多种编码器，能够调整 GIF 颜色，控制质量和体积，还能编码保存 Webp、APNG 等动图格式，总的来说是一个不错的软件，下图为用其制作的一张 GIF 动图。
 
-![GIF example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/gif_example.gif)
+![GIF example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/gif_example_raw.gif)
 
 #### Microsoft Windows Paint (Windows 画图)
 
@@ -301,7 +301,7 @@ Exif 可以记录相机 (手机) 型号、光圈、快门时长、图片尺寸�
 
 <details>
 
-<summary>其中 `cwebp` 工具用于创建图片</summary>
+<summary>其中 cwebp 工具用于创建图片 (点击展开)</summary>
 
 ```plaintext
 $ cwebp -longhelp
@@ -485,7 +485,7 @@ cwebp -m 6 input.png -o output.webp
 
       为了让读者直观感受一下 MOV 格式到底有多大，我使用 Ae 导出了一个 4 分 04 秒的 1080P 视频，使用 Apple Pro Res 422 编码器，视频码率达到了惊人的 132 Mbps，整个文件体积为 3.7 GB。
 
-      ![MOV example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/mov_example.png)
+      ![MOV example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/mov_example.png.avif)
 
 - FLV (Flash Video)
 

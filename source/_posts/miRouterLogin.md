@@ -19,7 +19,7 @@ excerpt: "使用 Python 脚本登录小米路由器"
 
 而获取WANIP的方式可以通过控制台轻松查看
 
-![](https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/router_pppoe_status.jpg)
+![](https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/router_pppoe_status.jpg.avif)
 
 url是这样的：`http://路由器IP/cgi-bin/luci/;stok=3064506d8615d0a05cad3356af54d898/api/xqnetwork/pppoe_status`
 
@@ -33,11 +33,11 @@ url是这样的：`http://路由器IP/cgi-bin/luci/;stok=3064506d8615d0a05cad335
 
 查找网页源代码，发现登录时调用loginHandle方法
 
-![](https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/loginhandle.jpg)
+![](https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/loginhandle.jpg.avif)
 
 源码显示加密是用了Encrypt方法，继续搜索关键词，最终发现会涉及`aes.js`和`sha1.js`两个源文件
 
-![](https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/encryptjs.jpg)
+![](https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/encryptjs.jpg.avif)
 
 捋一下逻辑就是：输入密码，由loginHandle方法调用Encrypt方法来生成nonce和加密后的password。将nonce和password POST给路由器，路由器就会返回token
 
@@ -83,4 +83,4 @@ print(os.popen("curl -ss \""+url+"\"|jq").read())
 
 执行结果：
 
-![](https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/router_script_stdout.jpg)
+![](https://gcore.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/router_script_stdout.jpg.avif)

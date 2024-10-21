@@ -23,7 +23,7 @@ thumbnail: "https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images
 
 进入游戏，先随便点点。可以很明显地看出来，这个游戏的界面用是 Android 控件，因为有那种很明显的Android 点击动画
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_store.webp)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_store.webp.avif)
 
 使用布局查看工具也能证实这个猜想
 
@@ -33,15 +33,15 @@ thumbnail: "https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images
 
 然后在 Web 端查看布局抓取结果：
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_gkd.png)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_gkd.png.avif)
 
 游戏战斗界面有瞄准 button，抓取得到其 id 为 `right_shot_button`，随后可以在 jadx 中搜索该关键词
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_jadx1.png)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_jadx1.png.avif)
 
 定位到相关代码后，进行简单交叉引用查找，可以发现很多调用都是在 alternativa 包里面。已知火箭炮的英文名为 Striker，jadx 中直接搜索，可以发现很多 alternativa 的用例，看来该包大概率是游戏逻辑处理部分
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_jadx_striker.png)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_jadx_striker.png.avif)
 
 最终也是经过一番翻找，发现相关的逻辑处理就在 `lockTarget` 函数中
 
@@ -116,7 +116,7 @@ StrikerWeapon["lockTarget"].implementation = function (lockResult, l) {
 };
 ```
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_frida_log.webp)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_frida_log.webp.avif)
 
 通过分析得知，该函数传入的 lockResult 是上一次扫描的目标对象，`l` 传入的是目前的瞄准对象 ID ，如果没有对象就是 `null` ，返回 `true` 则允许继续瞄准充能，返回 `false` 则不允许瞄准充能
 
@@ -124,7 +124,7 @@ StrikerWeapon["lockTarget"].implementation = function (lockResult, l) {
 
 效果就如图中，有开火动画，但是没有火箭飞出
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_no_rocket.webp)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_no_rocket.webp.avif)
 
 经过一番思索后我将其设置为 `return result || l!=null`
 
@@ -132,7 +132,7 @@ StrikerWeapon["lockTarget"].implementation = function (lockResult, l) {
 
 并且这种方式每次瞄准都需要敌人露头，实际上体验不佳
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_no_interrapt.webp)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_no_interrapt.webp.avif)
 
 为了解决目标死亡后继续充能的问题，我主动调用了游戏内部的 `isValidTarget` 函数进行 ID 对象解析，并且解析的是上一次的瞄准结果，只要上一次的瞄准结果的对象依旧有效，就使其 `return true`。
 
@@ -168,7 +168,7 @@ StrikerWeapon["lockTarget"].implementation = function (lockResult, l) {
 
 这样既避免了目标死亡后继续瞄准，又能实现瞄准记忆功能，在这种修改下，瞄准的结果不会丢失，使得我可以在任意位置进行瞄准，当然了打不打得到是另一回事
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_no_lose.webp)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_no_lose.webp.avif)
 
 但遗憾的是，服务器端似乎有外挂检测，检测逻辑不清楚，有可能是瞄准过程有遮挡或者没对准，然后发射出去就只有第一发有伤害，这样的话这个挂局限性就很大了，甚至可以说是反向优化。
 
@@ -180,7 +180,7 @@ StrikerWeapon["lockTarget"].implementation = function (lockResult, l) {
 
 虽然这个炮原版的瞄准逻辑就很强了，但是还是需要敌人和我同时露头，敌人不露头我就没法瞄，我一露头就有被打的风险，所以还是有优化空间
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_scop.webp)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_scop.webp.avif)
 
 经过查看发现这个炮的瞄准函数都是继承的同一套 `lockTarget`，所以直接套上去就能用
 
@@ -203,7 +203,7 @@ ScorpioWeapon["lockTarget"].implementation = function (lockResult, l) {
 
 然后使用效果就变成了：只要瞄过一次就能在任何地方重新瞄，无视任何掩体，只要求能对准就行
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_scop_no_inter.webp)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_scop_no_inter.webp.avif)
 
 由于这个炮的导弹向上飞，我只要选定一个合适的距离，导弹就可以跨过掩体打中，简直太超模了
 

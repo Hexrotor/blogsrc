@@ -131,11 +131,11 @@ generateHosts = false
 
 最近不知道哪次更新后开始菜单多了个 WSL Settings，我一看好家伙，很多东西都能调，甚至能自定义 Linux 内核。不过最重要的是它支持了调整网络类型，以前 WSL 2 默认是 Nat 模式，Windows 层 System Proxy 要同步进去还蛮麻烦的，而现在可以直接把网络类型更改为 mirror 模式，
 
-![WSL Settings](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/wsl_settings.png)
+![WSL Settings](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/wsl_settings.png.avif)
 
 如图上图，网络有 4 种模式，选择 mirror 的话 IP 会全部继承 Windows，包括 IPv6。并且直接通过 localhost+端口号就能实现双方互相访问，而且能自动同步 Windows 层配置的 localhost System Proxy，省去了人工步骤。
 
-![WSL Mirror](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/wsl_mirror.jpg)
+![WSL Mirror](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/wsl_mirror.jpg.avif)
 
 ### WSL 与 Windows PATH 冲突问题
 

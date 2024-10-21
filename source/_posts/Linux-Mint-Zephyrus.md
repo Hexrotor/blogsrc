@@ -19,11 +19,11 @@ categories: [技术]
 
 桌面用的是他们自己开发的 cinnamon。任务栏上面允许放置小插件(温度监控之类的)，QQ 小图标也可以正常地显示在任务栏中。但是这个桌面有个大槽点是，它开始菜单里左侧可以固定一些快捷应用，但是当你右键这些应用图标，它并不会显示出设置(取消固定之类的)，而是必须在列表里翻到原本的那个应用图标，然后右键才能取消固定。桌面图标有时候会错位，其实问题不大全选拖一下就行了。但是它还有个最严重的问题是，有时候会突然寄掉，然后自己会恢复。虽然它寄掉不会影响正在跑的东西，但是突然出现还是让人心头一紧。寄的原因尚不清楚，可能是爆内存了。开发人员或许知道这个桌面也有美中不足的地方，于是很贴心地在任务栏右键中给了一个疑难解答 debug 模式，可以快速重启桌面。
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/mint_taskbar.png)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/mint_taskbar.png.avif)
 
 它自带有软件商店，支持 SystemPackage 和 Flathub，使用体验还是不错的，图片和评论功能都有
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/mint_install.png)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/mint_install.png.avif)
 
 ### 踩坑记录
 
@@ -38,7 +38,7 @@ categories: [技术]
 
 你说得对，但是这个系统专门有个页面管理 N 卡驱动，可以在设置里进去
 
-![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/mint_gpu.png)
+![](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/mint_gpu.png.avif)
 
 驱动直接装上，一点毛病没有，浏览器都能调用，甚至任务栏小图标还给个显卡图标，可以调模式。但是建议不要调，亲测调成 Intel 节能模式后图形界面启动不了，就用 Nvidia 性能模式就行了
 
