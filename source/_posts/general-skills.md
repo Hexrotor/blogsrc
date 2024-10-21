@@ -247,9 +247,9 @@ SVG 是一种矢量格式，和传统图片位图不同，它不是保存像素�
 
 下面是我用工具乱画的一个 SVG 矢量图以及网上找的一个动态 SVG 图，在 F12 中打开源文件可以看到路径代码。
 
-![SVG example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_example.svg.avif)
+![SVG example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_example.svg)
 
-![SVG animation exmaple](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_animated_exmaple.svg.avif)
+![SVG animation exmaple](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/svg_animated_exmaple.svg)
 
 #### BMP
    
