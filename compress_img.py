@@ -7,7 +7,7 @@ def convert_image(filename):
     newfilename = filename.rsplit(".", 1)[0] + ".avif"
     try:
         os.system(f"ffmpeg -i {filename} -threads 16 {newfilename} -y")
-        os.remove(filename)
+        # os.remove(filename)
     except Exception as e:
         print(f"Error: {filename} {e}")
         exit(1)
