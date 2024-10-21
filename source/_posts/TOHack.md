@@ -4,7 +4,7 @@ date: 2024-04-11 00:59:20
 tags: [Android, Xposed, Frida]
 categories: [技术]
 excerpt: "没想到自己也有一天能给玩的游戏写挂"
-thumbnail: "https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_cover.jpg"
+thumbnail: "https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/tohack_cover.jpg.avif"
 ---
 
 3D 坦克是一个多人在线游戏，玩家操作自己的坦克进行杀敌、拔旗、站点等活动，整个游戏偏科幻类型
