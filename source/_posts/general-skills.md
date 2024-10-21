@@ -182,12 +182,12 @@ JPEG 格式是一种流行的有损压缩图片格式，其文件后缀为 `.jpg
 
 比如我博客的夜间模式首页图，分辨率也不算很小，但是其体积仅为 `33KB`，这就是 JPEG 压缩的强大之处。
 
-![girl_dark](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/girl_dark.jpg.avif)
+![girl_dark](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/girl_dark_raw.jpg)
 
 JPEG 拥有四种压缩模式，本文稍微提一下前两种，分别是 **基于DCT的连续模式 Baseline JPEG** 与 **基于DCT的渐进式模式 Progressive JPEG**。
 
 - 连续模式 Baseline JPEG
-   这种模式是基本 JPEG 压缩模式，一次将图像由从左到右、由上到下进行处理，大部分软件保存 JPEG 默认都是这个模式。要直观地体验这个模式，可以在新标签页打开[上面那张图片](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/girl_dark.jpg)，再打开浏览器 F12 找到 Network 网络选项，选择模拟 3G 网络，勾选禁用缓存，然后刷新页面，注意观察图像的渲染状态。
+   这种模式是基本 JPEG 压缩模式，一次将图像由从左到右、由上到下进行处理，大部分软件保存 JPEG 默认都是这个模式。要直观地体验这个模式，可以在新标签页打开[上面那张图片](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/girl_dark_raw.jpg)，再打开浏览器 F12 找到 Network 网络选项，选择模拟 3G 网络，勾选禁用缓存，然后刷新页面，注意观察图像的渲染状态。
 - 渐进式模式 Progressive JPEG
    这种 JPEG 平常见得比较少，它在加载时可以先加载出一个大致的预览图，然后再慢慢变清晰，在网络传输较慢的场景可以为用户提供图像大致预览。
 
@@ -217,7 +217,7 @@ PNG 格式是一种常用的无损压缩格式，它能 `100%` 还原出原始�
 
 下面是一张无损动态 Webp 图片，体积仅为 `842KB`，而 GIF 要做到同等效果至少需要 `1.2MB`
 
-![Webp example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/webp_example.webp.avif)
+![Webp example](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/webp_example.webp)
 
 #### AVIF
 
@@ -231,7 +231,7 @@ PNG 格式是一种常用的无损压缩格式，它能 `100%` 还原出原始�
 
 该图片由我使用 FFmpeg 默认模式创建，若使用默认模式 (质量 75) 创建同款**有损** Webp 动图，大小约为 700KB，并且画面出现明显色块：
 
-![Webp lossy exmaple](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/webp_lossy_example.webp.avif)
+![Webp lossy exmaple](https://testingcf.jsdelivr.net/gh/hexrotor/hexrotor.github.io/images/post_imgs/skills_img/webp_lossy_example.webp)
 
 若要说该格式有什么缺点，那就是它的兼容性较差、编解码开销较大。
 

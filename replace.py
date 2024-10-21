@@ -7,7 +7,7 @@ def replace_jsdelivr_links(file_path):
     def replace_image_links(markdown_text):
         def replace_link(match):
             url = match.group(2)
-            if re.search(r'_raw\.(jpg|png|jpeg|gif|bmp)$', url, re.IGNORECASE) or url.endswith(".avif"):
+            if re.search(r'_raw\.(jpg|png|jpeg|gif|bmp)$', url, re.IGNORECASE) or url.endswith((".avif", ".webp")):
                 return f'![{match.group(1)}]({url})'
             else:
                 return f'![{match.group(1)}]({url+".avif"})'
