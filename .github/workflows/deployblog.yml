@@ -34,12 +34,18 @@ jobs:
         env:
           GITALK_SECRET: ${{ secrets.GITALK_SECRET }}
         run: |
-          sudo apt update && sudo apt install python3 ffmpeg -y
+          sudo apt update && sudo apt install python3 -y
           git clone --depth=1 https://github.com/Hexrotor/blogsrc
 
           cd blogsrc
           sed -i "s@SECRET_TO_BE_REPLACE@$GITALK_SECRET@g" _config.redefine.yml
           cp -rf post_imgs/* themes/redefine/source/images/post_imgs
+
+          # Deploy ffmpeg
+          wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
+          tar -xf ffmpeg-release-amd64-static.tar.xz
+          cp -f ffmpeg-*-amd64-static/ffmpeg /usr/local/bin/
+          chmod 755 /usr/local/bin/ffmpeg
           
           # replace images links with jsdelivr cdn
           # cat replace.sh|bash

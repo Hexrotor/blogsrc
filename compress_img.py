@@ -4,7 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 PATH = "./public/images/post_imgs/"
 
 def convert_image(filename):
-    newfilename = filename.rsplit(".", 1)[0] + ".avif"
+    newfilename = filename + ".avif"
     try:
         os.system(f"ffmpeg -i {filename} -threads 16 {newfilename} -y")
         # os.remove(filename)
