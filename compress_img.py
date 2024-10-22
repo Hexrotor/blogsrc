@@ -6,7 +6,7 @@ PATH = "./public/images/post_imgs/"
 def convert_image(filename):
     newfilename = filename + ".avif"
     try:
-        os.system(f"ffmpeg -v warning -i {filename} -threads 16 {newfilename} -y")
+        os.system(f"ffmpeg -v warning -i {filename} -row-mt 1 -threads 16  -tiles 4x4 -cpu-used 5 {newfilename} -y")
         # os.remove(filename)
     except Exception as e:
         print(f"Error: {filename} {e}")
