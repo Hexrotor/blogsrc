@@ -19,7 +19,7 @@ sticky: 999
 
 # 本文章正在施工中
 
-~2024.10.18
+~2024.10.23
 
 # 搜索引擎篇
 
@@ -431,7 +431,13 @@ cwebp -m 6 input.png -o output.webp
 
 #### ImageMagick
 
-待填坑
+[ImageMagick](https://imagemagick.org/) 是一个开源的命令行图像转化工具，支持的格式非常多，使用也很简单，但对动图的支持性似乎不太好。
+
+使用方式如下：
+
+```plaintext
+magick input.png output.webp
+```
 
 ## 视频
 
@@ -563,6 +569,21 @@ VVC 到目前为止似乎还没有正式发布，并且由于它的前辈 HEVC �
 
 AOMedia Video 1 (AV1) 是一个开放、免专利的影片编码格式，为网络流传输而设计。它由开放媒体联盟 (AOMedia) 开发，目标是取代其前身 VP9。
 
-**本节内容较多，待补充**
+创建 AV1 主要是因为 HEVC 的专利许可成本高昂，授权空间模糊，业界对此积怨已久。AOM 联盟最初由七间公司，Amazon、Cisco、Google、Intel、Microsoft、Mozilla 和 Netflix 所组成，并宣布技术重点为提供高质量**网络**影像。到目前为止 (2024.10)，AV1 已经在多家平台上正式投入使用，包括 Netflix、YouTube、Bilibili 等大型视频平台。
 
-## 持续更新中(10.18)
+AV1 专门为网络流媒体而设计，它在低码率下的压缩率表现得非常好。由于 AV1 是开源的，所以存在衍生版本，目前常用的 AV1 编码器有三种，分别为 libaom-av1、librav1e、libsvtav1。
+
+- [libaom-av1](https://aomedia.googlesource.com/aom/)
+   该编码器是一个参考库，它是 AV1 的示例版本，编码速度非常慢，在生产环境中基本不会考虑使用该编码器。
+
+- [librav1e](https://github.com/xiph/rav1e)
+   第二慢的编码器，效果未知，大约和 libaom-av1 质量相当。
+
+- [libsvtav1](https://gitlab.com/AOMediaCodec/SVT-AV1/)
+   Netflix 主导开发的编码器，编码速度最快，但是快也意味着压缩率不高。
+
+上面提到过的 AVIF 图像使用的正是 AV1 编码器，这使得该图像格式可以做到比相同质量 JPEG 图像体积小 60% 左右，本博客已经将图片全面替换为该格式。
+
+需要注意的是，AV1 的理论效果虽然强于 HEVC，但是它为了规避专利问题做了很多妥协，在速度比 HEVC 慢几倍的同时甚至不一定能做到更低的码率，相比 H.266/VVC 也不一定能做到更好的效果，AV1 的最大问题始终还是速度太慢。在后续介绍工具 FFMpeg 时，我将会进行编码测试，对各个编码器进行对比评测。
+
+## 持续更新中(10.23)
